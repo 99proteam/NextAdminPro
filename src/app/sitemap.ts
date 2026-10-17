@@ -3,7 +3,7 @@ import { flatNavigation } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["/", "/login", "/register", ...flatNavigation.map((n) => n.href)];
+  const routes = ["/", "/pricing", "/docs", "/changelog", "/login", "/register", ...flatNavigation.map((n) => n.href)];
   return routes.map((route) => ({
     url: `${siteConfig.url}${route === "/" ? "" : route}`,
     changeFrequency: "weekly",

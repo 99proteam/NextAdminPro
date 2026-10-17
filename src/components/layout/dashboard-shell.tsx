@@ -4,14 +4,16 @@ import * as React from "react";
 import { useLocalStorage } from "@/lib/use-local-storage";
 import { CommandMenuProvider } from "./command-menu";
 import { Header } from "./header";
+import { KeyboardShortcuts } from "./shortcuts-dialog";
 import { Sidebar } from "./sidebar";
 
 export function DashboardShell({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useLocalStorage("nap-sidebar-collapsed", false);
+  const toggle = React.useCallback(() => setCollapsed((c) => !c), [setCollapsed]);
   return (
     <CommandMenuProvider>
       <div className="flex min-h-svh w-full">
-        <Sidebar collapsed={collapsed} onToggle={() => setCollapsed((c) => !c)} />
+        <Sidebar collapsed={collapsed} onToggle={toggle} />
         <div className="flex min-w-0 flex-1 flex-col">
           <Header />
           <main id="main" className="flex-1 px-4 py-6 sm:px-6 lg:px-8">
@@ -19,6 +21,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
           </main>
         </div>
       </div>
+      <KeyboardShortcuts onToggleSidebar={toggle} />
     </CommandMenuProvider>
   );
 }

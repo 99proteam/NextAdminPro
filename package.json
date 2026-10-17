@@ -1,39 +1,51 @@
 {
   "name": "next-admin-pro",
-  "version": "1.0.0",
-  "description": "Free open-source Next.js 16 admin dashboard template built with TypeScript, Tailwind CSS v4 and Radix UI.",
+  "version": "1.1.0",
+  "description": "Free open-source Next.js 16 admin dashboard template \u2013 TypeScript, Tailwind CSS v4, Radix UI. Analytics, CRM, e-commerce, invoices, reports, helpdesk, chat, file manager, kanban, RBAC and dark mode.",
   "private": true,
   "license": "MIT",
   "author": "99proteam",
-  "homepage": "https://github.com/99proteam/nextadminpro#readme",
+  "homepage": "https://99proteam.github.io/NextAdminPro/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/99proteam/nextadminpro.git"
+    "url": "git+https://github.com/99proteam/NextAdminPro.git"
   },
   "bugs": {
-    "url": "https://github.com/99proteam/nextadminpro/issues"
+    "url": "https://github.com/99proteam/NextAdminPro/issues"
+  },
+  "funding": {
+    "type": "buymeacoffee",
+    "url": "https://buymeacoffee.com/99proteam"
   },
   "keywords": [
     "nextjs",
     "nextjs-admin",
+    "nextjs-template",
     "admin-dashboard",
     "admin-template",
+    "admin-panel",
     "dashboard",
+    "react",
+    "react-dashboard",
+    "typescript",
     "tailwindcss",
     "shadcn-ui",
     "radix-ui",
-    "typescript",
-    "react",
     "saas",
     "crm",
-    "ecommerce"
+    "ecommerce",
+    "helpdesk",
+    "kanban",
+    "file-manager",
+    "chat"
   ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build:pages": "node scripts/build-pages.mjs"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Dialog as D } from "radix-ui";
-import { Bell, ChevronRight, CreditCard, LogOut, Menu, Search, Settings, User } from "lucide-react";
+import { Bell, CalendarPlus, ChevronRight, CreditCard, FilePlus2, LifeBuoy, LogOut, Menu, PackagePlus, Plus, Search, Settings, User, UserPlus } from "lucide-react";
 import { flatNavigation } from "@/config/navigation";
 import { currentUser, notifications } from "@/lib/data";
 import { formatRelative } from "@/lib/time";
@@ -21,6 +21,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { SponsorButton } from "@/components/sponsor-button";
 import { useCommandMenu } from "./command-menu";
 import { Logo } from "./logo";
 import { SidebarNav } from "./sidebar";
@@ -32,7 +33,7 @@ function Breadcrumbs() {
   const crumbs = parts.map((part, i) => {
     const href = "/" + parts.slice(0, i + 1).join("/");
     const nav = flatNavigation.find((n) => n.href === href);
-    const isRecord = /^(cus|ord|inv|prd)_/.test(part);
+    const isRecord = /^(cus|ord|inv|prd|tkt)_/.test(part);
     return { href, label: nav?.title ?? (isRecord ? "Details" : part.replace(/-/g, " ")) };
   });
   return (
@@ -99,6 +100,26 @@ function NotificationsPopover() {
   );
 }
 
+function QuickCreate() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button size="icon" className="size-9" aria-label="Quick create">
+          <Plus />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-52">
+        <DropdownMenuLabel>Create new</DropdownMenuLabel>
+        <DropdownMenuItem asChild><Link href="/dashboard/customers?new=1"><UserPlus /> Customer</Link></DropdownMenuItem>
+        <DropdownMenuItem asChild><Link href="/dashboard/products?new=1"><PackagePlus /> Product</Link></DropdownMenuItem>
+        <DropdownMenuItem asChild><Link href="/dashboard/invoices?new=1"><FilePlus2 /> Invoice</Link></DropdownMenuItem>
+        <DropdownMenuItem asChild><Link href="/dashboard/calendar"><CalendarPlus /> Event</Link></DropdownMenuItem>
+        <DropdownMenuItem asChild><Link href="/dashboard/support?new=1"><LifeBuoy /> Support ticket</Link></DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
 function UserMenu() {
   return (
     <DropdownMenu>
@@ -147,12 +168,14 @@ export function Header() {
       <div className="ml-auto flex items-center gap-1 sm:gap-2">
         <button
           onClick={open}
-          className="flex h-9 cursor-pointer items-center gap-2 rounded-md border bg-card px-3 text-sm text-muted-foreground shadow-xs hover:bg-accent sm:w-64"
+          className="flex h-9 cursor-pointer items-center gap-2 rounded-md border bg-card px-3 text-sm text-muted-foreground shadow-xs hover:bg-accent sm:w-56 xl:w-64"
         >
           <Search className="size-4" />
           <span className="hidden sm:inline">Search…</span>
           <kbd className="ml-auto hidden rounded border bg-muted px-1.5 py-0.5 text-[10px] font-medium sm:inline">⌘K</kbd>
         </button>
+        <SponsorButton size="sm" label="Sponsor" className="hidden md:inline-flex" />
+        <QuickCreate />
         <ThemeMenu />
         <NotificationsPopover />
         <UserMenu />

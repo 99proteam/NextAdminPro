@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { CheckCircle2, Plus, Send, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import type { Customer, Invoice } from "@/lib/data";
@@ -24,8 +24,9 @@ interface Line {
 
 export function InvoicesView({ initial, customers }: { initial: Invoice[]; customers: Customer[] }) {
   const router = useRouter();
+  const params = useSearchParams();
   const [data, setData] = React.useState(initial);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(params.get("new") === "1");
 
   const sum = (s: Invoice["status"]) => data.filter((i) => i.status === s).reduce((a, i) => a + i.amount, 0);
 

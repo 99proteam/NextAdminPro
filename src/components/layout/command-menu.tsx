@@ -54,7 +54,7 @@ export function CommandMenuProvider({ children }: { children: React.ReactNode })
       })),
       { id: "act-cust", group: "Actions", label: "Add new customer", icon: UserPlus, run: go("/dashboard/customers?new=1") },
       { id: "act-prod", group: "Actions", label: "Add new product", icon: PackagePlus, run: go("/dashboard/products?new=1") },
-      { id: "act-inv", group: "Actions", label: "Create invoice", icon: FilePlus2, run: go("/dashboard/invoices") },
+      { id: "act-inv", group: "Actions", label: "Create invoice", icon: FilePlus2, run: go("/dashboard/invoices?new=1") },
       { id: "theme-light", group: "Theme", label: "Light mode", icon: Sun, run: () => setTheme("light") },
       { id: "theme-dark", group: "Theme", label: "Dark mode", icon: Moon, run: () => setTheme("dark") },
       { id: "theme-system", group: "Theme", label: "System theme", icon: Laptop, run: () => setTheme("system") },

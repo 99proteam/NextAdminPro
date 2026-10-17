@@ -7,6 +7,8 @@ import { formatRelative } from "@/lib/time";
 import { PageHeader } from "@/components/layout/page-header";
 import { StatCard } from "@/components/dashboard/stat-card";
 import { DownloadReportButton } from "@/components/dashboard/download-report";
+import { OnboardingChecklist } from "@/components/dashboard/onboarding-checklist";
+import { SponsorBanner } from "@/components/dashboard/sponsor-banner";
 import { StatusBadge } from "@/components/status-badge";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -42,6 +44,8 @@ export default function DashboardPage() {
           </>
         }
       />
+
+      <SponsorBanner />
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard label="Revenue (Oct)" value={formatCurrency(thisMonth.revenue, "USD")} change={((thisMonth.revenue - prevMonth.revenue) / prevMonth.revenue) * 100} icon={DollarSign} />
@@ -112,6 +116,7 @@ export default function DashboardPage() {
         </Card>
 
         <div className="flex flex-col gap-4">
+          <OnboardingChecklist />
           <Card>
             <CardHeader>
               <CardTitle>Top products</CardTitle>

@@ -2,6 +2,12 @@ import { createRng, daysAgo, NOW, DAY, firstNames, lastNames, companies, locatio
 import type {
   AuditLog,
   CalendarEvent,
+  ChatChannel,
+  ChatMessage,
+  Coupon,
+  FileItem,
+  Report,
+  Ticket,
   Customer,
   Invoice,
   Message,
@@ -390,3 +396,120 @@ export const getOrder = (id: string) => orders.find((o) => o.id === id);
 export const getInvoice = (id: string) => invoices.find((i) => i.id === id);
 export const getProduct = (id: string) => products.find((p) => p.id === id);
 export const ordersForCustomer = (id: string) => orders.filter((o) => o.customerId === id);
+
+/* ------------------------------------------------------------------ */
+/*  Coupons, support tickets, files, chat, reports                     */
+/* ------------------------------------------------------------------ */
+
+const iso = (offsetDays: number) => new Date(NOW + offsetDays * DAY).toISOString();
+
+export const coupons: Coupon[] = [
+  { id: "cpn_1", code: "WELCOME10", description: "10% off the first order", type: "percent", value: 10, uses: 842, limit: null, minOrder: 0, status: "active", startsAt: iso(-200), endsAt: iso(165) },
+  { id: "cpn_2", code: "FALL25", description: "Autumn sale – 25% off sitewide", type: "percent", value: 25, uses: 1290, limit: 2000, minOrder: 50, status: "active", startsAt: iso(-20), endsAt: iso(12) },
+  { id: "cpn_3", code: "FREESHIP", description: "Free shipping on orders over $75", type: "shipping", value: 0, uses: 3120, limit: null, minOrder: 75, status: "active", startsAt: iso(-400), endsAt: iso(300) },
+  { id: "cpn_4", code: "BLACKFRIDAY", description: "Black Friday – $50 off orders over $250", type: "fixed", value: 50, uses: 0, limit: 5000, minOrder: 250, status: "scheduled", startsAt: iso(42), endsAt: iso(46) },
+  { id: "cpn_5", code: "VIP20", description: "20% for VIP customers", type: "percent", value: 20, uses: 188, limit: 500, minOrder: 0, status: "paused", startsAt: iso(-90), endsAt: iso(90) },
+  { id: "cpn_6", code: "SUMMER15", description: "Summer promo", type: "percent", value: 15, uses: 2400, limit: 2400, minOrder: 30, status: "expired", startsAt: iso(-130), endsAt: iso(-40) },
+  { id: "cpn_7", code: "SAVE5", description: "$5 off any order", type: "fixed", value: 5, uses: 610, limit: 1000, minOrder: 20, status: "active", startsAt: iso(-60), endsAt: iso(30) },
+];
+
+const ticketSubjects: [string, Ticket["priority"], Ticket["channel"]][] = [
+  ["Order arrived damaged", "high", "email"],
+  ["How do I change my billing address?", "low", "web"],
+  ["Charged twice for the same order", "urgent", "phone"],
+  ["Discount code not working at checkout", "medium", "chat"],
+  ["Where is my package?", "medium", "email"],
+  ["Request for invoice copy", "low", "email"],
+  ["Cannot log in after password reset", "high", "chat"],
+  ["Bulk pricing for 50+ units", "medium", "web"],
+  ["Wrong size delivered", "medium", "email"],
+  ["API returns 429 errors", "urgent", "web"],
+  ["Cancel my subscription", "high", "phone"],
+  ["Feature request: dark mode in emails", "low", "web"],
+];
+const tkr = createRng(88);
+export const tickets: Ticket[] = ticketSubjects.map(([subject, priority, channel], i) => {
+  const c = customers[i * 4 + 1];
+  const created = NOW - (i * 0.6 + tkr.float(0, 0.5)) * DAY;
+  const status: Ticket["status"] = i < 4 ? "open" : i < 7 ? "pending" : i < 10 ? "resolved" : "closed";
+  const agent = team[1 + (i % 4)].name;
+  return {
+    id: `tkt_${1200 + i}`,
+    number: `#${1200 + i}`,
+    subject,
+    customer: c.name,
+    email: c.email,
+    status,
+    priority,
+    channel,
+    assignee: i % 5 === 0 ? null : agent,
+    createdAt: new Date(created).toISOString(),
+    updatedAt: new Date(created + tkr.float(0.05, 0.4) * DAY).toISOString(),
+    messages: [
+      { from: c.name, staff: false, body: `Hi, ${subject.toLowerCase()}. Could you help me with this? My order number is ${orders[i].number}.`, at: new Date(created).toISOString() },
+      ...(status !== "open"
+        ? [{ from: agent, staff: true, body: "Thanks for reaching out! I’ve looked into this and I’m on it. I’ll update you within 24 hours.", at: new Date(created + 0.1 * DAY).toISOString() }]
+        : []),
+      ...(status === "resolved" || status === "closed"
+        ? [{ from: c.name, staff: false, body: "That fixed it, thank you so much!", at: new Date(created + 0.3 * DAY).toISOString() }]
+        : []),
+    ],
+  };
+});
+
+export const files: FileItem[] = [
+  { id: "fld_brand", name: "Brand assets", kind: "folder", size: 284_000_000, items: 42, folder: "root", owner: "Yuki Tanaka", modifiedAt: iso(-1), starred: true, shared: true },
+  { id: "fld_finance", name: "Finance", kind: "folder", size: 96_400_000, items: 18, folder: "root", owner: "Priya Mehta", modifiedAt: iso(-3), starred: false, shared: false },
+  { id: "fld_marketing", name: "Marketing", kind: "folder", size: 1_240_000_000, items: 76, folder: "root", owner: "Diego Reyes", modifiedAt: iso(-0.2), starred: true, shared: true },
+  { id: "fld_contracts", name: "Contracts", kind: "folder", size: 32_000_000, items: 11, folder: "root", owner: "Alex Morgan", modifiedAt: iso(-12), starred: false, shared: false },
+  { id: "fil_1", name: "Q3-financial-report.pdf", kind: "pdf", size: 2_400_000, folder: "root", owner: "Priya Mehta", modifiedAt: iso(-0.5), starred: true, shared: true },
+  { id: "fil_2", name: "Product-roadmap-2027.doc", kind: "doc", size: 860_000, folder: "root", owner: "Alex Morgan", modifiedAt: iso(-1.2), starred: false, shared: true },
+  { id: "fil_3", name: "Customer-export.csv", kind: "sheet", size: 4_100_000, folder: "root", owner: "Jonas Hansen", modifiedAt: iso(-2), starred: false, shared: false },
+  { id: "fil_4", name: "Homepage-hero.png", kind: "image", size: 3_800_000, folder: "root", owner: "Yuki Tanaka", modifiedAt: iso(-2.5), starred: false, shared: true },
+  { id: "fil_5", name: "Onboarding-walkthrough.mp4", kind: "video", size: 184_000_000, folder: "root", owner: "Diego Reyes", modifiedAt: iso(-4), starred: false, shared: true },
+  { id: "fil_6", name: "Website-backup.zip", kind: "zip", size: 642_000_000, folder: "root", owner: "Alex Morgan", modifiedAt: iso(-7), starred: false, shared: false },
+  { id: "fil_7", name: "webhook-handler.ts", kind: "code", size: 12_000, folder: "root", owner: "Priya Mehta", modifiedAt: iso(-9), starred: false, shared: false },
+  { id: "fil_8", name: "Logo-primary.svg", kind: "image", size: 24_000, folder: "fld_brand", owner: "Yuki Tanaka", modifiedAt: iso(-1), starred: true, shared: true },
+  { id: "fil_9", name: "Brand-guidelines.pdf", kind: "pdf", size: 18_200_000, folder: "fld_brand", owner: "Yuki Tanaka", modifiedAt: iso(-6), starred: false, shared: true },
+  { id: "fil_10", name: "Budget-2027.xlsx", kind: "sheet", size: 1_100_000, folder: "fld_finance", owner: "Priya Mehta", modifiedAt: iso(-3), starred: false, shared: false },
+  { id: "fil_11", name: "Black-Friday-campaign.doc", kind: "doc", size: 540_000, folder: "fld_marketing", owner: "Diego Reyes", modifiedAt: iso(-0.2), starred: false, shared: true },
+  { id: "fil_12", name: "NDA-template.pdf", kind: "pdf", size: 310_000, folder: "fld_contracts", owner: "Alex Morgan", modifiedAt: iso(-12), starred: false, shared: false },
+];
+
+export const chatChannels: ChatChannel[] = [
+  { id: "general", name: "general", kind: "channel", topic: "Company-wide announcements and chatter", unread: 0, members: team.slice(0, 6).map((m) => m.name) },
+  { id: "sales", name: "sales", kind: "channel", topic: "Deals, leads and revenue wins 🎉", unread: 3, members: team.slice(0, 4).map((m) => m.name) },
+  { id: "support", name: "support", kind: "channel", topic: "Escalations and customer issues", unread: 1, members: team.slice(1, 5).map((m) => m.name) },
+  { id: "product", name: "product", kind: "channel", topic: "Roadmap, specs and releases", unread: 0, members: team.slice(0, 5).map((m) => m.name) },
+  { id: "dm_priya", name: "Priya Mehta", kind: "dm", unread: 2, members: ["Alex Morgan", "Priya Mehta"] },
+  { id: "dm_jonas", name: "Jonas Hansen", kind: "dm", unread: 0, members: ["Alex Morgan", "Jonas Hansen"] },
+  { id: "dm_yuki", name: "Yuki Tanaka", kind: "dm", unread: 0, members: ["Alex Morgan", "Yuki Tanaka"] },
+];
+
+const msgAt = (minutesAgo: number) => new Date(NOW - minutesAgo * 60_000).toISOString();
+export const chatMessages: ChatMessage[] = [
+  { id: "m1", channelId: "general", author: "Alex Morgan", body: "Morning team! Reminder: all-hands at 3pm today.", at: msgAt(300) },
+  { id: "m2", channelId: "general", author: "Yuki Tanaka", body: "New brand assets are in the Files › Brand assets folder 🎨", at: msgAt(240), reactions: [{ emoji: "🔥", count: 4 }] },
+  { id: "m3", channelId: "general", author: "Diego Reyes", body: "Black Friday campaign brief is ready for review.", at: msgAt(90) },
+  { id: "m4", channelId: "sales", author: "Jonas Hansen", body: "Closed the Globex deal – $48k ARR! 🎉", at: msgAt(180), reactions: [{ emoji: "🎉", count: 6 }, { emoji: "🙌", count: 3 }] },
+  { id: "m5", channelId: "sales", author: "Priya Mehta", body: "Amazing work! Can you add it to the Q4 pipeline report?", at: msgAt(170) },
+  { id: "m6", channelId: "sales", author: "Jonas Hansen", body: "Done. Also two new enterprise leads from the webinar.", at: msgAt(45) },
+  { id: "m7", channelId: "support", author: "Priya Mehta", body: "Ticket #1202 (double charge) is escalated – can someone from finance check Stripe?", at: msgAt(60) },
+  { id: "m8", channelId: "product", author: "Alex Morgan", body: "v2.0 ships Friday. Please wrap up reviews by Thursday EOD.", at: msgAt(400) },
+  { id: "m9", channelId: "dm_priya", author: "Priya Mehta", body: "Do you have 10 minutes to go over the invoice batch?", at: msgAt(25) },
+  { id: "m10", channelId: "dm_priya", author: "Priya Mehta", body: "No rush, whenever you’re free.", at: msgAt(24) },
+  { id: "m11", channelId: "dm_jonas", author: "Jonas Hansen", body: "Thanks for the intro to the Hooli team!", at: msgAt(1440) },
+  { id: "m12", channelId: "dm_yuki", author: "Alex Morgan", body: "Love the new dashboard illustrations.", at: msgAt(2000) },
+];
+
+export const reports: Report[] = [
+  { id: "rpt_1", name: "Monthly sales summary", description: "Revenue, orders and AOV by channel and category", category: "Sales", schedule: "monthly", format: "PDF", lastRunAt: iso(-15), recipients: 4 },
+  { id: "rpt_2", name: "Weekly KPI digest", description: "Top-line metrics with week-over-week change", category: "Sales", schedule: "weekly", format: "PDF", lastRunAt: iso(-4), recipients: 7 },
+  { id: "rpt_3", name: "Customer cohort retention", description: "Monthly cohorts and repeat-purchase rate", category: "Customers", schedule: "monthly", format: "XLSX", lastRunAt: iso(-15), recipients: 2 },
+  { id: "rpt_4", name: "Low-stock & reorder list", description: "Products at or below their reorder level", category: "Inventory", schedule: "daily", format: "CSV", lastRunAt: iso(-0.4), recipients: 3 },
+  { id: "rpt_5", name: "Accounts receivable aging", description: "Unpaid invoices grouped by days overdue", category: "Finance", schedule: "weekly", format: "XLSX", lastRunAt: iso(-4), recipients: 2 },
+  { id: "rpt_6", name: "Campaign performance", description: "Coupon redemptions, traffic sources and conversion", category: "Marketing", schedule: "none", format: "CSV", lastRunAt: iso(-21), recipients: 1 },
+  { id: "rpt_7", name: "Tax summary (quarterly)", description: "Taxable sales and tax collected by region", category: "Finance", schedule: "none", format: "PDF", lastRunAt: iso(-17), recipients: 1 },
+];
+
+export const getTicket = (id: string) => tickets.find((t) => t.id === id);

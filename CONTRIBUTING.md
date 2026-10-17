@@ -5,8 +5,8 @@ Thanks for helping make NextAdminPro better! Bug reports, feature ideas, new pag
 ## Getting started
 
 ```bash
-git clone https://github.com/99proteam/nextadminpro.git
-cd nextadminpro
+git clone https://github.com/99proteam/NextAdminPro.git
+cd NextAdminPro
 npm install
 npm run dev
 ```

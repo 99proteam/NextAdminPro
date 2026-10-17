@@ -1,170 +1,308 @@
-import { GithubIcon } from "@/components/icons";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
   BarChart3,
+  Briefcase,
+  Building2,
+  Coffee,
   Command,
+  FileBarChart,
   FileText,
+  FolderOpen,
+  Headphones,
   Heart,
   KanbanSquare,
+  Keyboard,
+  LifeBuoy,
+  MessagesSquare,
   Moon,
   Package,
+  Rocket,
   ShieldCheck,
+  ShoppingCart,
   Smartphone,
+  Star,
   Table2,
+  TicketPercent,
   Users,
   Zap,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Logo } from "@/components/layout/logo";
 import { siteConfig } from "@/config/site";
+import { GithubIcon } from "@/components/icons";
+import { MarketingShell } from "@/components/marketing/site-chrome";
+import { SponsorButton } from "@/components/sponsor-button";
+import { Button } from "@/components/ui/button";
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const features = [
   { icon: BarChart3, title: "Analytics dashboards", text: "KPI cards, revenue, traffic, funnels and device breakdowns with accessible, theme-aware charts." },
+  { icon: FileBarChart, title: "Reports & P&L", text: "Profit & loss, monthly performance, one-click exports and scheduled email reports." },
   { icon: Table2, title: "Advanced data tables", text: "Search, faceted filters, sorting, pagination, column visibility, bulk actions and CSV export." },
-  { icon: Users, title: "CRM & customers", text: "Customer list and profile pages with lifetime value, order history and status management." },
-  { icon: Package, title: "E-commerce", text: "Products and inventory with low-stock alerts, orders with status workflow and order details." },
-  { icon: FileText, title: "Invoices", text: "Invoice list with paid/overdue tracking and a print-ready invoice view (save as PDF)." },
-  { icon: KanbanSquare, title: "Kanban, calendar & inbox", text: "Drag-and-drop task board, month calendar with events and a full email-style inbox." },
-  { icon: ShieldCheck, title: "Roles, permissions & audit log", text: "RBAC permission matrix, team management, 2FA status and a filterable activity log." },
-  { icon: Command, title: "Command palette", text: "Press ⌘K / Ctrl+K to jump to any page, customer, order or product, or switch theme." },
-  { icon: Moon, title: "Dark mode & accent themes", text: "Light, dark and system modes plus six accent colors, all driven by CSS design tokens." },
-  { icon: Smartphone, title: "Fully responsive", text: "Collapsible sidebar on desktop, slide-out navigation on mobile, tables that scroll gracefully." },
-  { icon: Zap, title: "Next.js 16 + React 19", text: "App Router, Server Components, Cache Components, Turbopack and TypeScript strict mode." },
-  { icon: Heart, title: "Free & MIT licensed", text: "Use it for client work, SaaS products or internal tools. No sign-up, no paywall." },
+  { icon: Users, title: "CRM & customers", text: "Customer list and profiles with lifetime value, order history and status management." },
+  { icon: Package, title: "Products & inventory", text: "Table and grid views, low-stock alerts, restocking and margins." },
+  { icon: ShoppingCart, title: "Orders", text: "Status workflow, bulk fulfilment, order detail with tracking, refunds and printing." },
+  { icon: FileText, title: "Invoices", text: "Line-item invoice builder, paid/overdue tracking and print-ready invoices." },
+  { icon: TicketPercent, title: "Coupons & promotions", text: "Percentage, fixed and free-shipping codes with usage limits and schedules." },
+  { icon: LifeBuoy, title: "Support helpdesk", text: "Multi-channel tickets, SLA timers, assignment, quick replies and conversation view." },
+  { icon: MessagesSquare, title: "Team chat", text: "Channels, direct messages, emoji reactions and typing indicators." },
+  { icon: FolderOpen, title: "File manager", text: "Folders, drag-and-drop upload, grid/list views, sharing, starring and storage usage." },
+  { icon: KanbanSquare, title: "Kanban, calendar & inbox", text: "Drag-and-drop task board, month calendar with events and an email-style inbox." },
+  { icon: ShieldCheck, title: "Roles, permissions & audit log", text: "RBAC permission matrix, team invites, 2FA status and a filterable activity log." },
+  { icon: Command, title: "Command palette", text: "Press ⌘K / Ctrl+K to jump to any page, customer, order or product." },
+  { icon: Keyboard, title: "Keyboard shortcuts", text: "G + letter navigation, Ctrl/⌘+B to toggle the sidebar, ? for the cheat sheet." },
+  { icon: Moon, title: "Dark mode & accent themes", text: "Light, dark and system modes plus six accent colors, driven by CSS design tokens." },
+  { icon: Smartphone, title: "Fully responsive", text: "Collapsible sidebar on desktop, slide-out navigation and touch-friendly layouts on mobile." },
+  { icon: Zap, title: "Next.js 16 + React 19", text: "App Router, Server Components, Cache Components, Turbopack and strict TypeScript." },
 ];
 
-const stack = ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "Radix UI", "Recharts", "Lucide icons", "next-themes"];
+const useCases = [
+  { icon: Rocket, title: "SaaS products", text: "Billing, team roles, API keys, usage and analytics." },
+  { icon: ShoppingCart, title: "E-commerce stores", text: "Products, inventory, orders, coupons and invoices." },
+  { icon: Briefcase, title: "Agencies & freelancers", text: "Clients, invoices, tasks, files and calendar." },
+  { icon: Headphones, title: "Customer support teams", text: "Helpdesk tickets, SLAs, inbox and team chat." },
+  { icon: Building2, title: "Internal tools", text: "Data tables, reports, audit logs and permissions." },
+  { icon: Users, title: "CRM & sales", text: "Customer profiles, lifetime value and activity." },
+];
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: siteConfig.name,
-  applicationCategory: "DeveloperApplication",
-  operatingSystem: "Web",
-  description: siteConfig.description,
-  url: siteConfig.url,
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-  license: "https://opensource.org/licenses/MIT",
-  codeRepository: siteConfig.github,
-};
+const stack = ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "Radix UI", "Recharts", "Lucide icons", "next-themes", "Sonner"];
+
+const faqs = [
+  {
+    q: "Is NextAdminPro really free?",
+    a: "Yes. NextAdminPro is 100% free and open source under the MIT license. You can use it for personal projects, client work and commercial SaaS products without paying anything.",
+  },
+  {
+    q: "Which version of Next.js does it use?",
+    a: "NextAdminPro is built on Next.js 16 with the App Router, React 19, TypeScript, Tailwind CSS v4 and Radix UI primitives.",
+  },
+  {
+    q: "Can I connect it to my own database or API?",
+    a: "Yes. All pages read from a typed data layer in src/lib/data. Replace the mock data with Prisma, Drizzle, Supabase, Firebase or any REST/GraphQL API.",
+  },
+  {
+    q: "Does it include authentication?",
+    a: "It ships with polished login, register and forgot-password pages. Plug in Auth.js, Better Auth, Clerk or Supabase Auth to make them work.",
+  },
+  {
+    q: "Is it compatible with shadcn/ui?",
+    a: "Yes. The components follow the same patterns as shadcn/ui (Radix UI + Tailwind CSS + class-variance-authority), so you can add shadcn components alongside them.",
+  },
+  {
+    q: "How can I support the project?",
+    a: "Star the repository on GitHub, share it with other developers, contribute on GitHub, or buy the maintainer a coffee at buymeacoffee.com/99proteam.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: siteConfig.name,
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Web",
+    description: siteConfig.description,
+    url: siteConfig.url,
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    license: "https://opensource.org/licenses/MIT",
+    codeRepository: siteConfig.github,
+    keywords: siteConfig.keywords.join(", "),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  },
+];
 
 export default function LandingPage() {
   return (
-    <div className="min-h-svh">
+    <MarketingShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <header className="sticky top-0 z-30 border-b bg-background/85 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-4 sm:px-6">
-          <Logo href="/" />
-          <nav className="ml-auto flex items-center gap-2">
-            <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
-              <a href="#features">Features</a>
+
+      <section className="relative overflow-hidden border-b">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(60%_50%_at_50%_0%,color-mix(in_oklab,var(--primary)_16%,transparent),transparent)]" />
+        <div className="mx-auto max-w-4xl px-4 pb-12 pt-20 text-center sm:px-6 sm:pt-24">
+          <a
+            href={siteConfig.github}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border bg-card px-3 py-1 text-xs font-medium text-muted-foreground shadow-xs hover:text-foreground"
+          >
+            <span className="size-1.5 rounded-full bg-success" /> v1.1 · Free &amp; open source · MIT license
+          </a>
+          <h1 className="mt-6 text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
+            The free <span className="text-primary">Next.js admin dashboard</span> template for any business
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground text-pretty">
+            25+ ready-made pages: analytics, CRM, e-commerce, invoices, reports, helpdesk, chat, file manager, kanban, calendar,
+            roles &amp; permissions and more. Built on Next.js 16, TypeScript and Tailwind CSS.
+          </p>
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+            <Button asChild size="lg">
+              <Link href="/dashboard">
+                Open live demo <ArrowRight />
+              </Link>
             </Button>
-            <Button asChild variant="outline" size="sm">
+            <Button asChild size="lg" variant="outline">
               <a href={siteConfig.github} target="_blank" rel="noreferrer">
-                <GithubIcon /> GitHub
+                <GithubIcon /> Star on GitHub
               </a>
             </Button>
-            <Button asChild size="sm">
-              <Link href="/dashboard">Live demo</Link>
-            </Button>
-          </nav>
-        </div>
-      </header>
-
-      <main>
-        <section className="relative overflow-hidden border-b">
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(60%_50%_at_50%_0%,color-mix(in_oklab,var(--primary)_16%,transparent),transparent)]" />
-          <div className="mx-auto max-w-4xl px-4 py-20 text-center sm:px-6 sm:py-28">
-            <a
-              href={siteConfig.github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border bg-card px-3 py-1 text-xs font-medium text-muted-foreground shadow-xs hover:text-foreground"
-            >
-              <span className="size-1.5 rounded-full bg-success" /> Free &amp; open source · MIT license
-            </a>
-            <h1 className="mt-6 text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
-              The free <span className="text-primary">Next.js admin dashboard</span> template for any business
-            </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground text-pretty">
-              NextAdminPro gives you a production-ready admin panel with analytics, CRM, e-commerce, invoices, kanban,
-              calendar, inbox, roles &amp; permissions and dark mode, built on Next.js 16, TypeScript and Tailwind CSS.
-            </p>
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <Button asChild size="lg">
-                <Link href="/dashboard">
-                  Open live demo <ArrowRight />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <a href={siteConfig.github} target="_blank" rel="noreferrer">
-                  <GithubIcon /> Star on GitHub
-                </a>
-              </Button>
-            </div>
-            <div className="mx-auto mt-8 max-w-md rounded-lg border bg-card px-4 py-3 text-left font-mono text-sm shadow-xs">
-              <span className="select-none text-muted-foreground">$ </span>
-              git clone {siteConfig.github}.git
-            </div>
+            <SponsorButton size="lg" />
           </div>
-        </section>
+          <div className="mx-auto mt-8 max-w-lg overflow-x-auto rounded-lg border bg-card px-4 py-3 text-left font-mono text-sm whitespace-nowrap shadow-xs">
+            <span className="select-none text-muted-foreground">$ </span>
+            git clone {siteConfig.github}.git
+          </div>
+        </div>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="overflow-hidden rounded-t-xl border border-b-0 bg-card shadow-2xl">
+            <Image
+              src={`${basePath}/screenshots/dashboard-light.png`}
+              alt="NextAdminPro admin dashboard with KPI cards, revenue chart and recent orders"
+              width={1440}
+              height={900}
+              priority
+              className="block w-full dark:hidden"
+            />
+            <Image
+              src={`${basePath}/screenshots/dashboard-dark.png`}
+              alt="NextAdminPro admin dashboard in dark mode"
+              width={1440}
+              height={900}
+              className="hidden w-full dark:block"
+            />
+          </div>
+        </div>
+      </section>
 
-        <section id="features" className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <section className="border-b bg-card">
+        <dl className="mx-auto grid max-w-6xl grid-cols-2 gap-6 px-4 py-10 text-center sm:px-6 md:grid-cols-4">
+          {[
+            ["25+", "Pages & screens"],
+            ["40+", "UI components"],
+            ["100%", "Free (MIT)"],
+            ["2 + 6", "Themes & accents"],
+          ].map(([v, l]) => (
+            <div key={l} className="flex flex-col-reverse">
+              <dt className="mt-1 text-sm text-muted-foreground">{l}</dt>
+              <dd className="text-3xl font-semibold tracking-tight">{v}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section id="features" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-20 sm:px-6">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl font-semibold tracking-tight">Everything a business admin panel needs</h2>
+          <p className="mt-3 text-muted-foreground">Pages and components you’d otherwise build from scratch, ready to connect to your own API or database.</p>
+        </div>
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((f) => (
+            <div key={f.title} className="rounded-xl border bg-card p-5 shadow-xs">
+              <div className="flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <f.icon className="size-[18px]" />
+              </div>
+              <h3 className="mt-4 font-semibold">{f.title}</h3>
+              <p className="mt-1.5 text-sm text-muted-foreground">{f.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-y bg-card">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-semibold tracking-tight">Everything a business admin panel needs</h2>
-            <p className="mt-3 text-muted-foreground">
-              Pages and components you would otherwise build from scratch, ready to connect to your own API or database.
-            </p>
+            <h2 className="text-3xl font-semibold tracking-tight">One template, any kind of business</h2>
+            <p className="mt-3 text-muted-foreground">Start from the modules you need and remove the rest.</p>
           </div>
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((f) => (
-              <div key={f.title} className="rounded-xl border bg-card p-5 shadow-xs">
-                <div className="flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                  <f.icon className="size-[18px]" />
+            {useCases.map((u) => (
+              <div key={u.title} className="flex gap-4 rounded-xl border bg-background p-5">
+                <u.icon className="size-6 shrink-0 text-primary" />
+                <div>
+                  <h3 className="font-semibold">{u.title}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{u.text}</p>
                 </div>
-                <h3 className="mt-4 font-semibold">{f.title}</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground">{f.text}</p>
               </div>
             ))}
           </div>
-        </section>
-
-        <section className="border-y bg-card">
-          <div className="mx-auto max-w-6xl px-4 py-14 text-center sm:px-6">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Built with a modern stack</h2>
-            <ul className="mt-6 flex flex-wrap justify-center gap-2">
-              {stack.map((s) => (
-                <li key={s} className="rounded-full border bg-background px-4 py-1.5 text-sm font-medium">
-                  {s}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
-          <h2 className="text-3xl font-semibold tracking-tight">Start building your admin panel today</h2>
-          <p className="mt-3 text-muted-foreground">Clone the repo, run <code className="rounded bg-muted px-1.5 py-0.5 text-sm">npm run dev</code> and you have a full dashboard in under a minute.</p>
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button asChild size="lg">
-              <Link href="/dashboard">Explore the dashboard <ArrowRight /></Link>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link href="/login">View auth pages</Link>
-            </Button>
-          </div>
-        </section>
-      </main>
-
-      <footer className="border-t">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 text-sm text-muted-foreground sm:flex-row sm:px-6">
-          <p>© 2026 NextAdminPro · Released under the MIT License.</p>
-          <a href={siteConfig.github} target="_blank" rel="noreferrer" className="hover:text-foreground">
-            github.com/99proteam/nextadminpro
-          </a>
+          <h2 className="mt-16 text-center text-sm font-semibold uppercase tracking-wider text-muted-foreground">Built with a modern stack</h2>
+          <ul className="mt-6 flex flex-wrap justify-center gap-2">
+            {stack.map((s) => (
+              <li key={s} className="rounded-full border bg-background px-4 py-1.5 text-sm font-medium">
+                {s}
+              </li>
+            ))}
+          </ul>
         </div>
-      </footer>
-    </div>
+      </section>
+
+      <section id="sponsor" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-20 sm:px-6">
+        <div className="relative overflow-hidden rounded-3xl border-2 border-[#FFDD00] bg-gradient-to-br from-[#FFDD00]/30 via-[#FFDD00]/10 to-transparent p-8 sm:p-12">
+          <Coffee className="absolute -right-6 -top-6 size-48 rotate-12 text-[#FFDD00]/40" aria-hidden />
+          <div className="relative max-w-2xl">
+            <p className="inline-flex items-center gap-2 rounded-full bg-[#FFDD00] px-3 py-1 text-xs font-semibold text-[#0d0c22]">
+              <Heart className="size-3.5 fill-current" /> Support open source
+            </p>
+            <h2 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">Love NextAdminPro? Buy me a coffee ☕</h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              NextAdminPro is free and always will be. If it saved you weeks of work, a small coffee helps fund new pages, bug
+              fixes and updates for everyone.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <SponsorButton size="lg" />
+              <Button asChild size="lg" variant="outline" className="bg-card">
+                <a href={siteConfig.github} target="_blank" rel="noreferrer">
+                  <Star /> Star on GitHub
+                </a>
+              </Button>
+            </div>
+            <p className="mt-4 text-sm text-muted-foreground">
+              <a href={siteConfig.sponsor} target="_blank" rel="noopener noreferrer" className="font-medium underline-offset-4 hover:underline">
+                buymeacoffee.com/99proteam
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t bg-card">
+        <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6">
+          <h2 className="text-center text-3xl font-semibold tracking-tight">Frequently asked questions</h2>
+          <div className="mt-10 divide-y rounded-xl border bg-background">
+            {faqs.map((f) => (
+              <details key={f.q} className="group p-5 [&_summary::-webkit-details-marker]:hidden">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium">
+                  {f.q}
+                  <span className="text-xl leading-none text-muted-foreground transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-3 text-sm text-muted-foreground">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
+        <h2 className="text-3xl font-semibold tracking-tight">Start building your admin panel today</h2>
+        <p className="mt-3 text-muted-foreground">
+          Clone the repo, run <code className="rounded bg-muted px-1.5 py-0.5 text-sm">npm run dev</code> and you have a full
+          dashboard in under a minute.
+        </p>
+        <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+          <Button asChild size="lg">
+            <Link href="/dashboard">
+              Explore the live demo <ArrowRight />
+            </Link>
+          </Button>
+          <Button asChild size="lg" variant="outline">
+            <Link href="/docs">Read the docs</Link>
+          </Button>
+        </div>
+      </section>
+    </MarketingShell>
   );
 }

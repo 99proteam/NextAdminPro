@@ -141,3 +141,74 @@ export interface TeamMember {
   lastActiveAt: string;
   twoFactor: boolean;
 }
+
+export interface Coupon {
+  id: string;
+  code: string;
+  description: string;
+  type: "percent" | "fixed" | "shipping";
+  value: number;
+  uses: number;
+  limit: number | null;
+  minOrder: number;
+  status: "active" | "scheduled" | "expired" | "paused";
+  startsAt: string;
+  endsAt: string;
+}
+
+export interface Ticket {
+  id: string;
+  number: string;
+  subject: string;
+  customer: string;
+  email: string;
+  status: "open" | "pending" | "resolved" | "closed";
+  priority: Priority;
+  channel: "email" | "chat" | "phone" | "web";
+  assignee: string | null;
+  createdAt: string;
+  updatedAt: string;
+  messages: { from: string; staff: boolean; body: string; at: string }[];
+}
+
+export interface FileItem {
+  id: string;
+  name: string;
+  kind: "folder" | "image" | "pdf" | "doc" | "sheet" | "video" | "zip" | "code";
+  size: number; // bytes (folders: total)
+  items?: number;
+  folder: string; // parent folder id, "root" for top level
+  owner: string;
+  modifiedAt: string;
+  starred: boolean;
+  shared: boolean;
+}
+
+export interface ChatChannel {
+  id: string;
+  name: string;
+  kind: "channel" | "dm";
+  topic?: string;
+  unread: number;
+  members: string[];
+}
+
+export interface ChatMessage {
+  id: string;
+  channelId: string;
+  author: string;
+  body: string;
+  at: string;
+  reactions?: { emoji: string; count: number }[];
+}
+
+export interface Report {
+  id: string;
+  name: string;
+  description: string;
+  category: "Sales" | "Customers" | "Inventory" | "Finance" | "Marketing";
+  schedule: "none" | "daily" | "weekly" | "monthly";
+  format: "CSV" | "PDF" | "XLSX";
+  lastRunAt: string;
+  recipients: number;
+}
