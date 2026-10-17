@@ -10,9 +10,19 @@ export const metadata: Metadata = {
 
 const releases = [
   {
-    version: "1.1.0",
+    version: "1.2.0",
     date: "October 2026",
     tag: "Latest",
+    items: [
+      "20 new modules: Deals pipeline, Subscriptions, Transactions, Reviews, Shipments, Vendors, Purchase orders, Warehouses, Expenses, Contracts, Projects, Timesheets, Appointments, Employees, Time off, Payroll, Campaigns, Blog, Knowledge base and Integrations",
+      "Reusable CRUD engine with stats, filters, bulk actions and auto-generated forms",
+      "Collapsible, filterable sidebar grouped by business area with “New” tags",
+      "Bigger, more visible sponsor links across the site and README",
+    ],
+  },
+  {
+    version: "1.1.0",
+    date: "October 2026",
     items: [
       "New modules: Reports with P&L and scheduling, Coupons, team Chat, File manager, Support helpdesk with SLA tracking",
       "UI Components showcase page",

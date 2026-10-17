@@ -6,7 +6,7 @@
  * them aside during the build and writes equivalent static files instead.
  */
 import { execSync } from "node:child_process";
-import { existsSync, mkdirSync, renameSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, renameSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const root = process.cwd();
@@ -28,9 +28,19 @@ try {
   moved.forEach((f) => renameSync(join(stash, f), join(root, "src/app", f)));
 }
 
-const { flatNavigation } = await import("./pages-routes.mjs");
-const urls = ["/", "/login/", "/register/", "/pricing/", "/docs/", "/changelog/", ...flatNavigation];
 const out = join(root, "out");
+
+// Every exported top-level page (out/<route>/index.html), excluding record detail pages.
+function collect(dir, prefix = "/") {
+  const found = existsSync(join(dir, "index.html")) ? [prefix] : [];
+  for (const name of readdirSync(dir)) {
+    if (name.startsWith("_") || name === "404" || /^(cus|ord|inv)_/.test(name)) continue;
+    const full = join(dir, name);
+    if (statSync(full).isDirectory()) found.push(...collect(full, `${prefix}${name}/`));
+  }
+  return found;
+}
+const urls = collect(out).filter((u) => !u.startsWith("/screenshots") && !u.startsWith("/badges"));
 
 writeFileSync(
   join(out, "sitemap.xml"),

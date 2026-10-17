@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Heart } from "lucide-react";
+import { ArrowRight, Coffee, Heart } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { GithubIcon } from "@/components/icons";
 import { Logo } from "@/components/layout/logo";
@@ -12,6 +12,21 @@ const links = [
   { href: "/docs", label: "Docs" },
   { href: "/changelog", label: "Changelog" },
 ];
+
+export function SponsorBar() {
+  return (
+    <a
+      href={siteConfig.sponsor}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex items-center justify-center gap-2 bg-[#FFDD00] px-4 py-2.5 text-center text-sm font-semibold text-[#0d0c22] hover:bg-[#ffe433] sm:text-base"
+    >
+      <Coffee className="size-5 shrink-0 transition-transform group-hover:-rotate-12" />
+      <span>Love NextAdminPro? It’s free forever. <span className="underline underline-offset-4">Buy me a coffee</span> to support it</span>
+      <ArrowRight className="hidden size-4 transition-transform group-hover:translate-x-1 sm:block" />
+    </a>
+  );
+}
 
 export function SiteHeader() {
   return (
@@ -84,6 +99,7 @@ function FooterCol({ title, items }: { title: string; items: [string, string][] 
 export function MarketingShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-svh flex-col">
+      <SponsorBar />
       <SiteHeader />
       <main className="flex-1">{children}</main>
       <SiteFooter />

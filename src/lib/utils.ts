@@ -10,6 +10,8 @@ export function formatCurrency(value: number, currency = "USD", compact = false)
     style: "currency",
     currency,
     notation: compact ? "compact" : "standard",
+    // Pin both bounds so Node (SSR) and browsers produce identical strings.
+    minimumFractionDigits: compact ? 0 : 2,
     maximumFractionDigits: compact ? 1 : 2,
   }).format(value);
 }

@@ -3,6 +3,12 @@ import Link from "next/link";
 import {
   ArrowRight,
   BarChart3,
+  Boxes,
+  FolderKanban,
+  Handshake,
+  Megaphone,
+  Plug,
+  UsersRound,
   Briefcase,
   Building2,
   Coffee,
@@ -50,6 +56,12 @@ const features = [
   { icon: FolderOpen, title: "File manager", text: "Folders, drag-and-drop upload, grid/list views, sharing, starring and storage usage." },
   { icon: KanbanSquare, title: "Kanban, calendar & inbox", text: "Drag-and-drop task board, month calendar with events and an email-style inbox." },
   { icon: ShieldCheck, title: "Roles, permissions & audit log", text: "RBAC permission matrix, team invites, 2FA status and a filterable activity log." },
+  { icon: Handshake, title: "Deals pipeline & subscriptions", text: "Drag-and-drop sales pipeline, weighted forecast, MRR/ARR, churn and transactions." },
+  { icon: UsersRound, title: "HR, time off & payroll", text: "Employee directory, leave approvals and monthly pay runs with payslip export." },
+  { icon: Boxes, title: "Inventory & procurement", text: "Warehouses, stock movements, vendors, purchase orders, shipments and contracts." },
+  { icon: FolderKanban, title: "Projects & timesheets", text: "Budgets, progress, live time tracking, billable hours and appointments." },
+  { icon: Megaphone, title: "Marketing & CMS", text: "Campaigns with open/click tracking, blog posts, knowledge base and reviews." },
+  { icon: Plug, title: "Integrations marketplace", text: "Connect Stripe, Slack, HubSpot, Zapier, S3 and more with a single toggle." },
   { icon: Command, title: "Command palette", text: "Press ⌘K / Ctrl+K to jump to any page, customer, order or product." },
   { icon: Keyboard, title: "Keyboard shortcuts", text: "G + letter navigation, Ctrl/⌘+B to toggle the sidebar, ? for the cheat sheet." },
   { icon: Moon, title: "Dark mode & accent themes", text: "Light, dark and system modes plus six accent colors, driven by CSS design tokens." },
@@ -130,14 +142,14 @@ export default function LandingPage() {
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border bg-card px-3 py-1 text-xs font-medium text-muted-foreground shadow-xs hover:text-foreground"
           >
-            <span className="size-1.5 rounded-full bg-success" /> v1.1 · Free &amp; open source · MIT license
+            <span className="size-1.5 rounded-full bg-success" /> v1.2 · Free &amp; open source · MIT license
           </a>
           <h1 className="mt-6 text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
             The free <span className="text-primary">Next.js admin dashboard</span> template for any business
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground text-pretty">
-            25+ ready-made pages: analytics, CRM, e-commerce, invoices, reports, helpdesk, chat, file manager, kanban, calendar,
-            roles &amp; permissions and more. Built on Next.js 16, TypeScript and Tailwind CSS.
+            45+ ready-made pages: analytics, CRM &amp; deals, e-commerce, subscriptions, invoices, HR &amp; payroll, projects,
+            inventory, helpdesk, chat, marketing, CMS, roles &amp; permissions and more. Built on Next.js 16, TypeScript and Tailwind CSS.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Button asChild size="lg">
@@ -181,7 +193,7 @@ export default function LandingPage() {
       <section className="border-b bg-card">
         <dl className="mx-auto grid max-w-6xl grid-cols-2 gap-6 px-4 py-10 text-center sm:px-6 md:grid-cols-4">
           {[
-            ["25+", "Pages & screens"],
+            ["45+", "Pages & modules"],
             ["40+", "UI components"],
             ["100%", "Free (MIT)"],
             ["2 + 6", "Themes & accents"],

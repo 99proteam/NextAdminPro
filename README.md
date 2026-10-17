@@ -7,9 +7,11 @@
 # NextAdminPro: Free Next.js Admin Dashboard Template
 
 **A free, open-source Next.js 16 admin dashboard template and admin panel for any business.**
-25+ pages: analytics, CRM, e-commerce, invoices, reports, helpdesk, chat, file manager, kanban, calendar, roles & permissions and dark mode.
+45+ pages and modules: analytics, CRM & deals pipeline, e-commerce, subscriptions, invoices, HR & payroll, projects, inventory, helpdesk, chat, marketing, CMS, roles & permissions and dark mode.
 
 Built with **Next.js 16** · **React 19** · **TypeScript** · **Tailwind CSS v4** · **Radix UI** (shadcn/ui-style components)
+
+<a href="https://buymeacoffee.com/99proteam"><img src="./public/badges/sponsor-banner.svg" alt="Buy me a coffee – support NextAdminPro at buymeacoffee.com/99proteam" width="100%" /></a>
 
 <p>
   <a href="https://99proteam.github.io/NextAdminPro/"><img src="https://img.shields.io/badge/🚀_Live_demo-Open-2a78d6?style=for-the-badge" alt="Live demo" /></a>
@@ -34,7 +36,7 @@ Built with **Next.js 16** · **React 19** · **TypeScript** · **Tailwind CSS v4
 > ### ☕ Support NextAdminPro
 > NextAdminPro is **100% free and open source**. If it saves you time, please consider supporting its development:
 >
-> <a href="https://buymeacoffee.com/99proteam"><img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=☕&slug=99proteam&button_colour=FFDD00&font_colour=000000&font_family=Inter&outline_colour=000000&coffee_colour=ffffff" alt="Buy me a coffee" height="48" /></a>
+> <a href="https://buymeacoffee.com/99proteam"><img src="./public/badges/buy-me-a-coffee.svg" alt="Buy me a coffee" height="48" /></a>
 >
 > **[buymeacoffee.com/99proteam](https://buymeacoffee.com/99proteam)**. Every coffee funds new pages, fixes and updates. ⭐ Starring the repo helps too!
 
@@ -57,7 +59,7 @@ Built with **Next.js 16** · **React 19** · **TypeScript** · **Tailwind CSS v4
 
 ## Why NextAdminPro?
 
-Most admin templates are paid, outdated, or a single dashboard page with nothing behind it. NextAdminPro is a **complete, working admin panel** with 25+ pages, 40+ reusable components and a typed data layer you can point at your own API or database in an afternoon.
+Most admin templates are paid, outdated, or a single dashboard page with nothing behind it. NextAdminPro is a **complete, working admin panel** with 45+ pages, 40+ reusable components and a typed data layer you can point at your own API or database in an afternoon.
 
 - ✅ **100% free**, MIT licensed. Use it for client projects, SaaS products and internal tools.
 - ✅ **Latest stack**: Next.js 16 App Router, React 19, Cache Components, Turbopack.
@@ -95,11 +97,34 @@ The demo is a static export deployed to GitHub Pages by the included GitHub Acti
 | 📜 **Audit log** | Filterable, exportable activity history with severity levels |
 | 🔔 **Notifications** | Notification center, filters, mark as read, per-event preferences |
 | ⚙️ **Settings** | Profile, workspace, password strength meter, 2FA, sessions, billing plans and usage, API keys, webhooks, appearance |
+| 🤝 **Deals pipeline** | Drag-and-drop sales pipeline by stage, weighted forecast, win rate, board and table views |
+| 🔁 **Subscriptions** | MRR/ARR, churn, plans, seats, renewals, MRR growth chart, retry or cancel |
+| 💳 **Transactions** | Charges, refunds, fees and payouts with method and status filters, one-click refunds |
+| ⭐ **Reviews** | Rating breakdown, moderation queue, publish/hide, verified buyers, replies |
+| 🚚 **Shipments** | Multi-carrier tracking, routes, ETAs, exceptions and customer notifications |
+| 🏭 **Vendors** | Supplier directory with categories, payment terms, ratings and spend |
+| 📋 **Purchase orders** | Create, send, receive and cancel POs, with committed spend |
+| 📦 **Warehouses & stock** | Capacity per location and a full stock-movement ledger (inbound, outbound, transfers) |
+| 🧾 **Expenses** | Submit, approve, reject and reimburse spending, with missing-receipt alerts |
+| ✍️ **Contracts** | Agreements with e-signature status, renewal dates and expiry warnings |
+| 📂 **Projects** | Budget vs. spend, progress, team and deadlines, with at-risk tracking |
+| ⏱️ **Timesheets** | Live timer, billable hours, utilisation and per-project time |
+| 🗓️ **Appointments** | Bookings with today’s schedule, hosts, locations and no-show rate |
+| 👔 **Employees (HR)** | Team directory, departments, employment type, salary and status |
+| 🌴 **Time off** | Leave requests with approve/reject workflow and team availability |
+| 💵 **Payroll** | Monthly pay runs with gross, taxes, benefits, net pay and payslip export |
+| 📣 **Campaigns** | Email/SMS/push campaigns with open, click and revenue tracking |
+| 📰 **Blog / CMS** | Posts with categories, tags, scheduling and view counts |
+| 📚 **Knowledge base** | Help-center articles by collection with helpfulness scores |
+| 🔌 **Integrations** | App marketplace (Stripe, Slack, HubSpot, Zapier…) with connect and configure |
 | 🧩 **UI components** | Showcase of every component: buttons, badges, forms, overlays, tabs, alerts, empty states |
 | 🔐 **Auth pages** | Login, register and forgot password with validation and OAuth buttons |
 | 🌐 **Public pages** | Landing page, pricing page template, documentation, changelog and 404 |
 
 ### Built into every page
+
+- **Reusable CRUD engine** (`src/components/crud`): stats, advanced table, filters, bulk actions and an auto-generated add/edit form. Build a new module in ~100 lines
+- **Collapsible, filterable sidebar** grouped by business area
 
 - **⌘K / Ctrl+K command palette**: search pages, customers, orders and products, or switch theme
 - **Keyboard shortcuts**: `G` + letter to navigate, `Ctrl/⌘+B` to toggle the sidebar, `?` for the cheat sheet
@@ -125,6 +150,12 @@ The demo is a static export deployed to GitHub Pages by the included GitHub Acti
 | ![Kanban board](./public/screenshots/tasks.png) | ![File manager](./public/screenshots/files.png) |
 | **Team chat** | **Printable invoice** |
 | ![Team chat](./public/screenshots/chat.png) | ![Invoice template](./public/screenshots/invoice.png) |
+| **Deals pipeline** | **Warehouses & stock** |
+| ![CRM deals pipeline kanban](./public/screenshots/deals.png) | ![Warehouse inventory management](./public/screenshots/warehouses.png) |
+| **Employees (HR)** | **Subscriptions & MRR** |
+| ![HR employee directory](./public/screenshots/employees.png) | ![SaaS subscriptions and MRR](./public/screenshots/subscriptions.png) |
+| **Projects** | **Integrations** |
+| ![Project management dashboard](./public/screenshots/projects.png) | ![Integrations marketplace](./public/screenshots/integrations.png) |
 
 <p align="center"><img src="./public/screenshots/mobile.png" alt="Responsive mobile admin dashboard" width="280" /></p>
 
@@ -253,6 +284,7 @@ Yes. Light, dark and system modes plus six accent colors, all switchable at runt
 
 - [x] Reports, coupons, chat, file manager and helpdesk modules
 - [x] Live demo on GitHub Pages
+- [x] 20 more modules: deals, subscriptions, HR, payroll, projects, inventory, contracts, campaigns, CMS and more
 - [ ] Database starter (Prisma + PostgreSQL) with Server Actions
 - [ ] Auth integration example
 - [ ] Internationalization (i18n) and RTL
@@ -267,7 +299,7 @@ Have an idea? [Open a feature request](https://github.com/99proteam/NextAdminPro
 
 If NextAdminPro helps you build faster, please support it ❤️
 
-<a href="https://buymeacoffee.com/99proteam"><img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=☕&slug=99proteam&button_colour=FFDD00&font_colour=000000&font_family=Inter&outline_colour=000000&coffee_colour=ffffff" alt="Buy me a coffee" height="56" /></a>
+<a href="https://buymeacoffee.com/99proteam"><img src="./public/badges/sponsor-banner.svg" alt="Buy me a coffee – support NextAdminPro" width="100%" /></a>
 
 **[buymeacoffee.com/99proteam](https://buymeacoffee.com/99proteam)** · ⭐ **[Star on GitHub](https://github.com/99proteam/NextAdminPro)**
 
@@ -283,4 +315,4 @@ Contributions are welcome! Read the [contributing guide](./CONTRIBUTING.md) to g
 
 ---
 
-<sub>**Keywords:** nextjs admin dashboard, next.js admin template, nextjs admin panel, free admin dashboard template, open source admin dashboard, react admin dashboard, tailwind css admin template, shadcn admin dashboard, typescript admin panel, saas dashboard template, ecommerce admin dashboard, crm dashboard, helpdesk dashboard, nextjs 16 template, react 19 dashboard, radix ui admin, kanban board, invoice template, file manager, chat ui</sub>
+<sub>**Keywords:** nextjs admin dashboard, crm pipeline, hr dashboard, payroll dashboard, inventory management, project management dashboard, saas subscription dashboard, next.js admin template, nextjs admin panel, free admin dashboard template, open source admin dashboard, react admin dashboard, tailwind css admin template, shadcn admin dashboard, typescript admin panel, saas dashboard template, ecommerce admin dashboard, crm dashboard, helpdesk dashboard, nextjs 16 template, react 19 dashboard, radix ui admin, kanban board, invoice template, file manager, chat ui</sub>
