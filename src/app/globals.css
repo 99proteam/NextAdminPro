@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* -------------------------------------------------------------------------- */
+/*  Design tokens                                                             */
+/*  Every color in the UI resolves to one of these. Change them here to       */
+/*  rebrand the whole admin panel.                                            */
+/* -------------------------------------------------------------------------- */
+
+:root {
+  --radius: 0.625rem;
+
+  --background: #f9f9f7;
+  --foreground: #0b0b0b;
+  --card: #ffffff;
+  --card-foreground: #0b0b0b;
+  --popover: #ffffff;
+  --popover-foreground: #0b0b0b;
+  --muted: #f1f0ec;
+  --muted-foreground: #64635e;
+  --accent: #f1f0ec;
+  --accent-foreground: #0b0b0b;
+  --border: #e4e3dd;
+  --input: #dad9d2;
+  --sidebar: #ffffff;
+  --sidebar-border: #e9e8e2;
+
+  --primary: #2a78d6;
+  --primary-foreground: #ffffff;
+  --ring: #2a78d6;
+
+  --destructive: #d03b3b;
+  --destructive-foreground: #ffffff;
+  --success: #006300;
+  --warning: #9a6700;
+
+  /* Chart tokens (validated categorical palette, light) */
+  --chart-surface: #ffffff;
+  --chart-grid: #e1e0d9;
+  --chart-axis: #898781;
+  --chart-1: #2a78d6;
+  --chart-2: #eb6834;
+  --chart-3: #1baf7a;
+  --chart-4: #eda100;
+  --chart-5: #e87ba4;
+  --chart-6: #008300;
+}
+
+.dark {
+  --background: #0d0d0d;
+  --foreground: #f0efec;
+  --card: #1a1a19;
+  --card-foreground: #f0efec;
+  --popover: #1f1f1e;
+  --popover-foreground: #f0efec;
+  --muted: #262624;
+  --muted-foreground: #a8a79e;
+  --accent: #2a2a28;
+  --accent-foreground: #f0efec;
+  --border: #2c2c2a;
+  --input: #383835;
+  --sidebar: #141413;
+  --sidebar-border: #262624;
+
+  --primary: #3987e5;
+  --primary-foreground: #ffffff;
+  --ring: #3987e5;
+
+  --destructive: #e66767;
+  --success: #0ca30c;
+  --warning: #fab219;
+
+  --chart-surface: #1a1a19;
+  --chart-grid: #2c2c2a;
+  --chart-axis: #898781;
+  --chart-1: #3987e5;
+  --chart-2: #d95926;
+  --chart-3: #199e70;
+  --chart-4: #c98500;
+  --chart-5: #d55181;
+  --chart-6: #008300;
+}
+
+/* Accent presets, switched from Settings → Appearance or the header menu */
+[data-accent="violet"] { --primary: #6250d6; --ring: #6250d6; }
+.dark[data-accent="violet"] { --primary: #9085e9; --ring: #9085e9; }
+[data-accent="green"] { --primary: #0a7d3e; --ring: #0a7d3e; }
+.dark[data-accent="green"] { --primary: #1baf7a; --ring: #1baf7a; }
+[data-accent="orange"] { --primary: #d4561f; --ring: #d4561f; }
+.dark[data-accent="orange"] { --primary: #eb6834; --ring: #eb6834; }
+[data-accent="rose"] { --primary: #c8305f; --ring: #c8305f; }
+.dark[data-accent="rose"] { --primary: #e87ba4; --ring: #e87ba4; --primary-foreground: #1a1a19; }
+[data-accent="slate"] { --primary: #27272a; --ring: #27272a; }
+.dark[data-accent="slate"] { --primary: #f0efec; --ring: #f0efec; --primary-foreground: #0b0b0b; }
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-chart-6: var(--chart-6);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+}
