@@ -117,7 +117,7 @@ The demo is a static export deployed to GitHub Pages by the included GitHub Acti
 | 📰 **Blog / CMS** | Posts with categories, tags, scheduling and view counts |
 | 📚 **Knowledge base** | Help-center articles by collection with helpfulness scores |
 | 🔌 **Integrations** | App marketplace (Stripe, Slack, HubSpot, Zapier…) with connect and configure |
-| 🧩 **UI components** | Showcase of every component: buttons, badges, forms, overlays, tabs, alerts, empty states |
+| 🧩 **UI components** | 40+ components: buttons, badges, forms, dialogs, dropdowns, tabs, accordion, alerts, stepper, slider, radio cards, toggle groups, combobox, tag input, OTP input, star rating, file dropzone, timeline, breadcrumb, pagination, hover card, context menu, copy button, code block, spinner, kbd, sparkline, avatar group, empty states |
 | 🔐 **Auth pages** | Login, register and forgot password with validation and OAuth buttons |
 | 🌐 **Public pages** | Landing page, pricing page template, documentation, changelog and 404 |
 

@@ -18,6 +18,7 @@ const releases = [
       "Reusable CRUD engine with stats, filters, bulk actions and auto-generated forms",
       "Collapsible, filterable sidebar grouped by business area with “New” tags",
       "Bigger, more visible sponsor links across the site and README",
+      "New UI components: accordion, alert, stepper, slider, radio cards, toggle group, combobox, tag input, OTP input, rating, dropzone, timeline, breadcrumb, pagination, hover card, context menu, copy button, code block, spinner, kbd, sparkline, avatar group and empty state",
     ],
   },
   {

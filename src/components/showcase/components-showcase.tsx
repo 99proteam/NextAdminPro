@@ -44,7 +44,7 @@ export function ComponentsShowcase() {
         <h1 className="text-2xl font-semibold tracking-tight">UI Components</h1>
         <p className="mt-1 text-sm text-muted-foreground">The building blocks of NextAdminPro, all in <code className="rounded bg-muted px-1 text-xs">src/components/ui</code>. Every component supports dark mode and accent themes.</p>
       </div>
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 [&>*]:min-w-0">
         <Section title="Buttons" description="Variants and sizes for every action.">
           <Button>Primary</Button>
           <Button variant="secondary">Secondary</Button>
