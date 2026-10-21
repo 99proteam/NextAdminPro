@@ -1,0 +1,4 @@
+:HL["/NextAdminPro/_next/static/chunks/0x-jitqhsw44f.css","style"]
+2:[["children",{"s":"__PAGE__","h":160}]]
+1:[["children",{"s":"/_not-found","h":96,"c":"$Q2"}]]
+0:{"b":"UiSdCTWp_8-7bP-XwA-n1","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
