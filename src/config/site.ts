@@ -7,6 +7,9 @@ export const siteConfig = {
   github: "https://github.com/99proteam/NextAdminPro",
   sponsor: "https://buymeacoffee.com/99proteam",
   demo: "https://99proteam.github.io/NextAdminPro/",
+  version: "1.2.0",
+  // 1200×630 social preview used for Open Graph / Twitter cards (relative to `url`).
+  ogImage: "/og-image.png",
   keywords: [
     "nextjs admin dashboard",
     "next.js admin template",
@@ -35,5 +38,15 @@ export const siteConfig = {
     "nextjs starter kit",
     "admin dashboard github",
     "mit license dashboard",
+    "nextjs dashboard template",
+    "react admin template",
+    "shadcn ui dashboard",
+    "tailwind dashboard template",
+    "open source admin panel",
+    "erp dashboard template",
+    "hr dashboard template",
+    "inventory management dashboard",
+    "project management dashboard",
+    "admin ui kit",
   ],
 };

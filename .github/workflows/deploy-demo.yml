@@ -35,6 +35,9 @@ jobs:
         env:
           PAGES_BASE_PATH: /${{ github.event.repository.name }}
           NEXT_PUBLIC_SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+          # Optional: add these under Settings → Secrets and variables → Actions → Variables
+          NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
+          NEXT_PUBLIC_BING_SITE_VERIFICATION: ${{ vars.BING_SITE_VERIFICATION }}
 
       - name: Publish to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4

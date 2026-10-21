@@ -41,11 +41,12 @@ function collect(dir, prefix = "/") {
   return found;
 }
 const urls = collect(out).filter((u) => !u.startsWith("/screenshots") && !u.startsWith("/badges"));
+const lastmod = new Date().toISOString().slice(0, 10);
 
 writeFileSync(
   join(out, "sitemap.xml"),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls
-    .map((u) => `  <url><loc>${siteUrl}${u}</loc><changefreq>weekly</changefreq><priority>${u === "/" ? "1.0" : "0.7"}</priority></url>`)
+    .map((u) => `  <url><loc>${siteUrl}${u}</loc><lastmod>${lastmod}</lastmod><changefreq>weekly</changefreq><priority>${u === "/" ? "1.0" : "0.7"}</priority></url>`)
     .join("\n")}\n</urlset>\n`,
 );
 writeFileSync(join(out, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/sitemap.xml\n`);

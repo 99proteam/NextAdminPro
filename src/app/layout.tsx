@@ -18,6 +18,8 @@ export const metadata: Metadata = {
   applicationName: siteConfig.name,
   authors: [{ name: "99proteam", url: siteConfig.github }],
   creator: "99proteam",
+  publisher: "99proteam",
+  category: "technology",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
@@ -25,13 +27,27 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: siteConfig.title,
     description: siteConfig.description,
+    locale: "en_US",
+    images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: siteConfig.title }],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
+    images: [siteConfig.ogImage],
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+  // Optional: paste your Google Search Console / Bing verification codes into .env
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : undefined,
+  },
 };
 
 export const viewport: Viewport = {
