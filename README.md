@@ -35,6 +35,8 @@ Built with **Next.js 16** · **React 19** · **TypeScript** · **Tailwind CSS v4
 
 > [!TIP]
 > ### 💖 Sponsor NextAdminPro
+> [![GitHub Sponsors](https://img.shields.io/github/sponsors/99proteam?label=sponsors&logo=githubsponsors&logoColor=white&color=db61a2)](https://github.com/sponsors/99proteam) **Goal: $5,000/month** · [see live progress](https://github.com/sponsors/99proteam)
+>
 > NextAdminPro is **100% free and open source**. If it saves you time, please become a sponsor on **GitHub Sponsors**. Our goal is **$5,000 a month** so NextAdminPro can be maintained full time.
 >
 > <a href="https://github.com/sponsors/99proteam"><img src="./public/badges/github-sponsors.svg" alt="Sponsor on GitHub" height="48" /></a> <a href="https://buymeacoffee.com/99proteam"><img src="./public/badges/buy-me-a-coffee.svg" alt="Buy me a coffee" height="48" /></a>
