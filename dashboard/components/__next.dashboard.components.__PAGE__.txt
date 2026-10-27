@@ -1,0 +1,78 @@
+1:"$Sreact.fragment"
+2:"/NextAdminPro/_next/static/chunks/17omate5tdgm3.js"
+3:"/NextAdminPro/_next/static/chunks/3io4ll1euqb69.js"
+4:"/NextAdminPro/_next/static/chunks/0nrtb_cz56bzr.js"
+5:"/NextAdminPro/_next/static/chunks/2jxrm4rw-ibp4.js"
+6:I[85266,["$2","$3","$4","$5"],"accentScript"]
+7:I[85266,["$2","$3","$4","$5"],"Providers"]
+8:I[39756,["$2","$3","$4","$5"],"default"]
+9:I[37457,["$2","$3","$4","$5"],"default"]
+a:"/NextAdminPro/_next/static/chunks/2n5qeheznvl4u.js"
+b:I[22016,["$2","$3","$4","$5","$a"],""]
+f:"LoadingBoundaryProvider"
+10:I[39756,["$2","$3","$4","$5"],"$f"]
+11:"/NextAdminPro/_next/static/chunks/0zcqwvn6mdg8e.js"
+12:"/NextAdminPro/_next/static/chunks/1gcq96p1f4j09.js"
+13:"/NextAdminPro/_next/static/chunks/3j_a9jflekdbt.js"
+14:"/NextAdminPro/_next/static/chunks/0_5fx2yf3cgnx.js"
+15:I[9362,["$2","$3","$4","$5","$11","$12","$13","$14"],"DashboardShell"]
+16:"/NextAdminPro/_next/static/chunks/39f6oxquqw4gg.js"
+17:I[47178,["$2","$3","$4","$5","$11","$12","$13","$14","$16"],"default"]
+1d:"/NextAdminPro/_next/static/chunks/1l2fn5dzxl2po.js"
+1e:"/NextAdminPro/_next/static/chunks/1oo_73dafw2tf.js"
+1f:"/NextAdminPro/_next/static/chunks/3eof45qr_bve2.js"
+20:"ComponentsShowcase"
+21:I[32775,["$2","$3","$4","$5","$11","$12","$13","$14","$1d","$1e","$1f"],"$20"]
+22:"AdvancedShowcase"
+23:I[79750,["$2","$3","$4","$5","$11","$12","$13","$14","$1d","$1e","$1f"],"$22"]
+28:"ViewportBoundary"
+29:I[97367,["$2","$3","$4","$5"],"$28"]
+2a:"MetadataBoundary"
+2b:I[97367,["$2","$3","$4","$5"],"$2a"]
+2c:"$Sreact.suspense"
+:HL["/NextAdminPro/_next/static/chunks/366-h6q2o5ujt.css","style"]
+d:X
+1b:X
+1b:C
+1c:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[[["$","$L21",null,{}],["$","$L23",null,{}]],[["$","script","script-0",{"src":"/NextAdminPro/_next/static/chunks/1l2fn5dzxl2po.js","async":true}],"$L24","$L25"],"$L26"]}],"p":"$@27","v":null,"s":"$d"}}]]
+19:[["children",{"s":"components","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","template":["$","$L9",null,{}]}]]}],"p":"$@1a","v":"$1b","s":"$d"},"c":"$Q1c"}]]
+e:[["children",{"s":"dashboard","h":100,"d":{"r":["$","$L10",null,{"loading":[["$","div","l",{"className":"flex flex-col gap-4","aria-busy":"true","aria-label":"Loading","children":[["$","div",null,{"className":"animate-pulse rounded-md bg-muted h-8 w-64"}],["$","div",null,{"className":"grid gap-4 sm:grid-cols-2 xl:grid-cols-4","children":[["$","div","0",{"className":"animate-pulse bg-muted h-32 rounded-xl"}],["$","div","1",{"className":"animate-pulse bg-muted h-32 rounded-xl"}],["$","div","2",{"className":"animate-pulse bg-muted h-32 rounded-xl"}],["$","div","3",{"className":"animate-pulse bg-muted h-32 rounded-xl"}]]}],["$","div",null,{"className":"animate-pulse bg-muted h-80 rounded-xl"}]]}],[],null],"children":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/NextAdminPro/_next/static/chunks/0zcqwvn6mdg8e.js","async":true}],["$","script","script-1",{"src":"/NextAdminPro/_next/static/chunks/1gcq96p1f4j09.js","async":true}],["$","script","script-2",{"src":"/NextAdminPro/_next/static/chunks/3j_a9jflekdbt.js","async":true}],["$","script","script-3",{"src":"/NextAdminPro/_next/static/chunks/0_5fx2yf3cgnx.js","async":true}]],["$","$L15",null,{"children":["$","$L8",null,{"parallelRouterKey":"children","error":"$17","errorStyles":[],"errorScripts":[["$","script","script-0",{"src":"/NextAdminPro/_next/static/chunks/39f6oxquqw4gg.js","async":true}]],"template":["$","$L9",null,{}]}]}]]}]}],"p":"$@18","v":null,"s":"$d"},"c":"$Q19"}]]
+0:{"t":{"t":{"s":"","h":88,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/NextAdminPro/_next/static/chunks/366-h6q2o5ujt.css","precedence":"next"}],["$","script","script-0",{"src":"/NextAdminPro/_next/static/chunks/17omate5tdgm3.js","async":true}],["$","script","script-1",{"src":"/NextAdminPro/_next/static/chunks/3io4ll1euqb69.js","async":true}],["$","script","script-2",{"src":"/NextAdminPro/_next/static/chunks/0nrtb_cz56bzr.js","async":true}],["$","script","script-3",{"src":"/NextAdminPro/_next/static/chunks/2jxrm4rw-ibp4.js","async":true}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"className":"T19VSG_variable _8Li5zG_variable h-full antialiased","children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$6"}}]}],["$","body",null,{"className":"min-h-full","children":["$","$L7",null,{"children":["$","$L8",null,{"parallelRouterKey":"children","template":["$","$L9",null,{}],"notFound":[["$","main",null,{"className":"flex min-h-svh flex-col items-center justify-center gap-6 px-4 text-center","children":[["$","svg",null,{"viewBox":"0 0 32 32","className":"size-10","aria-hidden":true,"children":[["$","rect",null,{"width":"32","height":"32","rx":"8","className":"fill-primary"}],["$","path",null,{"d":"M9 22V10l7 8 7-8v12","fill":"none","stroke":"white","strokeWidth":"2.6","strokeLinecap":"round","strokeLinejoin":"round"}]]}],["$","div",null,{"children":[["$","p",null,{"className":"text-sm font-semibold text-primary","children":"404"}],["$","h1",null,{"className":"mt-2 text-3xl font-semibold tracking-tight","children":"Page not found"}],["$","p",null,{"className":"mt-2 text-muted-foreground","children":"The page you’re looking for doesn’t exist or has been moved."}]]}],["$","div",null,{"className":"flex gap-2","children":[["$","$Lb",null,{"href":"/dashboard","children":"Go to dashboard","className":"inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 h-9 px-4 py-2","ref":null}],["$","$Lb",null,{"href":"/","children":"Home","className":"inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer border border-input bg-card shadow-xs hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2","ref":null}]]}]]}],[]]}]}]}]]}]]}],"p":"$@c","v":null,"s":"$d"},"c":"$Qe"},"h":{"r":["$","$1","h",{"children":[null,["$","$L29",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f9f9f7","media":"(prefers-color-scheme: light)"}],["$","meta","3",{"name":"theme-color","content":"#0d0d0d","media":"(prefers-color-scheme: dark)"}]]}],["$","$L2b",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"UI Components · NextAdminPro"}],["$","meta","1",{"name":"description","content":"NextAdminPro is a free, open-source Next.js 16 admin dashboard template built with TypeScript, Tailwind CSS v4 and Radix UI. Includes analytics, CRM, e-commerce, invoices, kanban, calendar, inbox, roles & permissions and dark mode."}],["$","meta","2",{"name":"application-name","content":"NextAdminPro"}],["$","link","3",{"rel":"author","href":"https://github.com/99proteam/NextAdminPro"}],["$","meta","4",{"name":"author","content":"99proteam"}],["$","meta","5",{"name":"keywords","content":"nextjs admin dashboard,next.js admin template,nextjs admin panel,free admin dashboard template,open source admin dashboard,react admin dashboard,tailwind admin template,shadcn admin dashboard,typescript admin panel,saas dashboard template,ecommerce admin dashboard,crm dashboard,nextjs 16 dashboard,react 19 admin template,tailwind css v4 dashboard,radix ui admin,analytics dashboard template,kanban board nextjs,invoice dashboard template,helpdesk dashboard,file manager template,chat app template,rbac admin panel,free nextjs template,nextjs starter kit,admin dashboard github,mit license dashboard,nextjs dashboard template,react admin template,shadcn ui dashboard,tailwind dashboard template,open source admin panel,erp dashboard template,hr dashboard template,inventory management dashboard,project management dashboard,admin ui kit"}],"$L2d","$L2e","$L2f","$L30","$L31","$L32","$L33","$L34","$L35","$L36","$L37","$L38","$L39","$L3a","$L3b","$L3c","$L3d","$L3e","$L3f","$L40","$L41","$L42"]}]}],null]}],"$L43"]}],"p":"$@44","v":null,"s":"$d"}},"a":"$@45","u":"$@46","b":"QsBb3AIRlfYcaEBRnmkFE"}
+47:I[97367,["$2","$3","$4","$5"],"OutletBoundary"]
+49:I[27201,["$2","$3","$4","$5"],"IconMark"]
+24:["$","script","script-1",{"src":"/NextAdminPro/_next/static/chunks/1oo_73dafw2tf.js","async":true}]
+25:["$","script","script-2",{"src":"/NextAdminPro/_next/static/chunks/3eof45qr_bve2.js","async":true}]
+26:["$","$L47",null,{"children":["$","$2c",null,{"name":"Next.MetadataOutlet","children":"$@48"}]}]
+2d:["$","meta","6",{"name":"creator","content":"99proteam"}]
+2e:["$","meta","7",{"name":"publisher","content":"99proteam"}]
+2f:["$","meta","8",{"name":"robots","content":"index, follow"}]
+30:["$","meta","9",{"name":"googlebot","content":"index, follow, max-image-preview:large, max-snippet:-1"}]
+31:["$","meta","10",{"name":"category","content":"technology"}]
+32:["$","link","11",{"rel":"canonical","href":"https://99proteam.github.io/NextAdminPro/"}]
+33:["$","meta","12",{"property":"og:title","content":"NextAdminPro – Free Open-Source Next.js Admin Dashboard Template"}]
+34:["$","meta","13",{"property":"og:description","content":"NextAdminPro is a free, open-source Next.js 16 admin dashboard template built with TypeScript, Tailwind CSS v4 and Radix UI. Includes analytics, CRM, e-commerce, invoices, kanban, calendar, inbox, roles & permissions and dark mode."}]
+35:["$","meta","14",{"property":"og:url","content":"https://99proteam.github.io/NextAdminPro/"}]
+36:["$","meta","15",{"property":"og:site_name","content":"NextAdminPro"}]
+37:["$","meta","16",{"property":"og:locale","content":"en_US"}]
+38:["$","meta","17",{"property":"og:image","content":"https://99proteam.github.io/NextAdminPro/og-image.png"}]
+39:["$","meta","18",{"property":"og:image:width","content":"1200"}]
+3a:["$","meta","19",{"property":"og:image:height","content":"630"}]
+3b:["$","meta","20",{"property":"og:image:alt","content":"NextAdminPro – Free Open-Source Next.js Admin Dashboard Template"}]
+3c:["$","meta","21",{"property":"og:type","content":"website"}]
+3d:["$","meta","22",{"name":"twitter:card","content":"summary_large_image"}]
+3e:["$","meta","23",{"name":"twitter:title","content":"NextAdminPro – Free Open-Source Next.js Admin Dashboard Template"}]
+3f:["$","meta","24",{"name":"twitter:description","content":"NextAdminPro is a free, open-source Next.js 16 admin dashboard template built with TypeScript, Tailwind CSS v4 and Radix UI. Includes analytics, CRM, e-commerce, invoices, kanban, calendar, inbox, roles & permissions and dark mode."}]
+40:["$","meta","25",{"name":"twitter:image","content":"https://99proteam.github.io/NextAdminPro/og-image.png"}]
+41:["$","link","26",{"rel":"icon","href":"/NextAdminPro/favicon.ico?favicon.117ezoe8m31dk.ico","sizes":"48x48","type":"image/x-icon"}]
+42:["$","$L49","27",{}]
+43:["$","meta",null,{"name":"next-size-adjust","content":""}]
+d:300
+48:null
+46:true
+d:C
+45:0
+1a:"$undefined"
+18:"$undefined"
+c:"$undefined"
+27:"$undefined"
+44:"$undefined"

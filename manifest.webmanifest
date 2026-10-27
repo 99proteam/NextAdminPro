@@ -1,0 +1,15 @@
+{
+  "name": "NextAdminPro",
+  "short_name": "NextAdminPro",
+  "start_url": "/NextAdminPro/dashboard/",
+  "display": "standalone",
+  "background_color": "#f9f9f7",
+  "theme_color": "#2a78d6",
+  "icons": [
+    {
+      "src": "/NextAdminPro/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}
