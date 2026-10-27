@@ -7,14 +7,15 @@
 # NextAdminPro: Free Next.js Admin Dashboard Template
 
 **A free, open-source Next.js 16 admin dashboard template and admin panel for any business.**
-45+ pages and modules: analytics, CRM & deals pipeline, e-commerce, subscriptions, invoices, HR & payroll, projects, inventory, helpdesk, chat, marketing, CMS, roles & permissions and dark mode.
+50+ pages and modules: analytics, CRM & deals pipeline, goals & OKRs, webhooks, e-commerce, subscriptions, invoices, HR & payroll, projects, inventory, helpdesk, chat, marketing, CMS, roles & permissions and dark mode.
 
 Built with **Next.js 16** · **React 19** · **TypeScript** · **Tailwind CSS v4** · **Radix UI** (shadcn/ui-style components)
 
-<a href="https://buymeacoffee.com/99proteam"><img src="./public/badges/sponsor-banner.svg" alt="Buy me a coffee – support NextAdminPro at buymeacoffee.com/99proteam" width="100%" /></a>
+<a href="https://github.com/sponsors/99proteam"><img src="./public/badges/sponsor-banner.svg" alt="Sponsor NextAdminPro on GitHub Sponsors – help us reach $5,000/month at github.com/sponsors/99proteam" width="100%" /></a>
 
 <p>
   <a href="https://99proteam.github.io/NextAdminPro/"><img src="https://img.shields.io/badge/🚀_Live_demo-Open-2a78d6?style=for-the-badge" alt="Live demo" /></a>
+  <a href="https://github.com/sponsors/99proteam"><img src="https://img.shields.io/badge/💖_Sponsor_on_GitHub-Goal_$5k%2Fmonth-db61a2?style=for-the-badge&logo=githubsponsors&logoColor=white&labelColor=0d1117" alt="Sponsor on GitHub" /></a>
   <a href="https://buymeacoffee.com/99proteam"><img src="https://img.shields.io/badge/☕_Buy_me_a_coffee-Support-FFDD00?style=for-the-badge&labelColor=0d0c22" alt="Buy me a coffee" /></a>
   <a href="https://github.com/99proteam/NextAdminPro"><img src="https://img.shields.io/github/stars/99proteam/NextAdminPro?style=for-the-badge&logo=github" alt="GitHub stars" /></a>
 </p>
@@ -26,19 +27,19 @@ Built with **Next.js 16** · **React 19** · **TypeScript** · **Tailwind CSS v4
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4-38bdf8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 
-**[🚀 Live demo](https://99proteam.github.io/NextAdminPro/)** · **[📖 Docs](https://99proteam.github.io/NextAdminPro/docs/)** · **[☕ Sponsor](https://buymeacoffee.com/99proteam)** · **[🐛 Report a bug](https://github.com/99proteam/NextAdminPro/issues)**
+**[🚀 Live demo](https://99proteam.github.io/NextAdminPro/)** · **[📖 Docs](https://99proteam.github.io/NextAdminPro/docs/)** · **[💖 Sponsor](https://github.com/sponsors/99proteam)** · **[🐛 Report a bug](https://github.com/99proteam/NextAdminPro/issues)**
 
 </div>
 
 ---
 
 > [!TIP]
-> ### ☕ Support NextAdminPro
-> NextAdminPro is **100% free and open source**. If it saves you time, please consider supporting its development:
+> ### 💖 Sponsor NextAdminPro
+> NextAdminPro is **100% free and open source**. If it saves you time, please become a sponsor on **GitHub Sponsors**. Our goal is **$5,000 a month** so NextAdminPro can be maintained full time.
 >
-> <a href="https://buymeacoffee.com/99proteam"><img src="./public/badges/buy-me-a-coffee.svg" alt="Buy me a coffee" height="48" /></a>
+> <a href="https://github.com/sponsors/99proteam"><img src="./public/badges/github-sponsors.svg" alt="Sponsor on GitHub" height="48" /></a> <a href="https://buymeacoffee.com/99proteam"><img src="./public/badges/buy-me-a-coffee.svg" alt="Buy me a coffee" height="48" /></a>
 >
-> **[buymeacoffee.com/99proteam](https://buymeacoffee.com/99proteam)**. Every coffee funds new pages, fixes and updates. ⭐ Starring the repo helps too!
+> **[github.com/sponsors/99proteam](https://github.com/sponsors/99proteam)** (monthly or one-time). You can also [buy me a coffee](https://buymeacoffee.com/99proteam). Every sponsor funds new pages, fixes and updates. ⭐ Starring the repo helps too!
 
 ---
 
@@ -108,6 +109,7 @@ The demo is a static export deployed to GitHub Pages by the included GitHub Acti
 | 🧾 **Expenses** | Submit, approve, reject and reimburse spending, with missing-receipt alerts |
 | ✍️ **Contracts** | Agreements with e-signature status, renewal dates and expiry warnings |
 | 📂 **Projects** | Budget vs. spend, progress, team and deadlines, with at-risk tracking |
+| 🎯 **Goals & OKRs** | Objectives with measurable key results, quarter/team/status filters, progress by team, check-in dialog that recalculates progress and health (on track, at risk, off track) |
 | ⏱️ **Timesheets** | Live timer, billable hours, utilisation and per-project time |
 | 🗓️ **Appointments** | Bookings with today’s schedule, hosts, locations and no-show rate |
 | 👔 **Employees (HR)** | Team directory, departments, employment type, salary and status |
@@ -117,6 +119,7 @@ The demo is a static export deployed to GitHub Pages by the included GitHub Acti
 | 📰 **Blog / CMS** | Posts with categories, tags, scheduling and view counts |
 | 📚 **Knowledge base** | Help-center articles by collection with helpfulness scores |
 | 🔌 **Integrations** | App marketplace (Stripe, Slack, HubSpot, Zapier…) with connect and configure |
+| 🪝 **Webhooks** | Endpoints with event subscriptions, enable/pause, signing secrets (reveal, copy, rotate), test events, delivery log with status codes, retries and payload preview, plus a signature verification snippet |
 | 🧩 **UI components** | 40+ components: buttons, badges, forms, dialogs, dropdowns, tabs, accordion, alerts, stepper, slider, radio cards, toggle groups, combobox, tag input, OTP input, star rating, file dropzone, timeline, breadcrumb, pagination, hover card, context menu, copy button, code block, spinner, kbd, sparkline, avatar group, empty states |
 | 🔐 **Auth pages** | Login, register and forgot password with validation and OAuth buttons |
 | 🌐 **Public pages** | Landing page, pricing page template, documentation, changelog and 404 |
@@ -277,7 +280,7 @@ Yes. Light, dark and system modes plus six accent colors, all switchable at runt
 <details>
 <summary><b>How can I support the project?</b></summary>
 
-⭐ Star the repo, share it, contribute, or <a href="https://buymeacoffee.com/99proteam">buy me a coffee</a>.
+⭐ Star the repo, share it, contribute, or <a href="https://github.com/sponsors/99proteam">become a sponsor on GitHub</a> (goal: $5,000/month). One-off <a href="https://buymeacoffee.com/99proteam">coffees</a> are welcome too.
 </details>
 
 ## Roadmap
@@ -285,6 +288,7 @@ Yes. Light, dark and system modes plus six accent colors, all switchable at runt
 - [x] Reports, coupons, chat, file manager and helpdesk modules
 - [x] Live demo on GitHub Pages
 - [x] 20 more modules: deals, subscriptions, HR, payroll, projects, inventory, contracts, campaigns, CMS and more
+- [x] Goals & OKRs and Webhooks modules
 - [ ] Database starter (Prisma + PostgreSQL) with Server Actions
 - [ ] Auth integration example
 - [ ] Internationalization (i18n) and RTL
@@ -297,11 +301,11 @@ Have an idea? [Open a feature request](https://github.com/99proteam/NextAdminPro
 
 <div align="center">
 
-If NextAdminPro helps you build faster, please support it ❤️
+If NextAdminPro helps you build faster, please become a sponsor ❤️ Our goal is **$5,000/month** on GitHub Sponsors.
 
-<a href="https://buymeacoffee.com/99proteam"><img src="./public/badges/sponsor-banner.svg" alt="Buy me a coffee – support NextAdminPro" width="100%" /></a>
+<a href="https://github.com/sponsors/99proteam"><img src="./public/badges/sponsor-banner.svg" alt="Sponsor NextAdminPro on GitHub Sponsors" width="100%" /></a>
 
-**[buymeacoffee.com/99proteam](https://buymeacoffee.com/99proteam)** · ⭐ **[Star on GitHub](https://github.com/99proteam/NextAdminPro)**
+**[github.com/sponsors/99proteam](https://github.com/sponsors/99proteam)** · ☕ **[Buy me a coffee](https://buymeacoffee.com/99proteam)** · ⭐ **[Star on GitHub](https://github.com/99proteam/NextAdminPro)**
 
 </div>
 

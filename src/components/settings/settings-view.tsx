@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTheme } from "next-themes";
 import { Check, Copy, CreditCard, Eye, EyeOff, KeyRound, Laptop, Moon, Monitor, Plus, ShieldCheck, Smartphone, Sun, Trash2, Upload } from "lucide-react";
@@ -388,11 +389,10 @@ function ApiKeysTab() {
       <Card>
         <CardHeader>
           <CardTitle>Webhooks</CardTitle>
-          <CardDescription>Get notified at your endpoint when events happen.</CardDescription>
+          <CardDescription>Get notified at your endpoint when events happen. Manage endpoints, signing secrets and delivery logs on the Webhooks page.</CardDescription>
         </CardHeader>
-        <CardContent className="flex flex-col gap-3 sm:flex-row">
-          <Input placeholder="https://api.yourapp.com/webhooks/nextadminpro" aria-label="Webhook URL" />
-          <Button variant="outline" onClick={() => toast.success("Webhook endpoint added")}>Add endpoint</Button>
+        <CardContent>
+          <Button variant="outline" asChild><Link href="/dashboard/webhooks">Manage webhooks</Link></Button>
         </CardContent>
       </Card>
 

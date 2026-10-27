@@ -32,12 +32,14 @@ import {
   ShieldCheck,
   ShoppingCart,
   Star,
+  Target,
   TicketPercent,
   Timer,
   Truck,
   Users,
   UsersRound,
   Wallet,
+  Webhook,
   type LucideIcon,
 } from "lucide-react";
 
@@ -98,6 +100,7 @@ export const navigation: NavGroup[] = [
     label: "Projects & Work",
     items: [
       { title: "Projects", href: "/dashboard/projects", icon: FolderKanban, isNew: true, keywords: ["budget", "progress", "clients"] },
+      { title: "Goals & OKRs", href: "/dashboard/goals", icon: Target, isNew: true, keywords: ["okr", "objectives", "key results", "targets", "check-in"] },
       { title: "Tasks", href: "/dashboard/tasks", icon: KanbanSquare, keywords: ["kanban", "board"] },
       { title: "Timesheets", href: "/dashboard/timesheets", icon: Timer, isNew: true, keywords: ["time tracking", "hours", "billable"] },
       { title: "Calendar", href: "/dashboard/calendar", icon: CalendarDays, keywords: ["events", "schedule"] },
@@ -134,6 +137,7 @@ export const navigation: NavGroup[] = [
     items: [
       { title: "Roles & Permissions", href: "/dashboard/roles", icon: ShieldCheck, keywords: ["rbac", "access", "team"] },
       { title: "Integrations", href: "/dashboard/integrations", icon: Plug, isNew: true, keywords: ["apps", "stripe", "slack", "zapier"] },
+      { title: "Webhooks", href: "/dashboard/webhooks", icon: Webhook, isNew: true, keywords: ["events", "endpoints", "developer", "signing secret", "deliveries"] },
       { title: "Audit Log", href: "/dashboard/audit-log", icon: ScrollText, keywords: ["activity", "security", "history"] },
       { title: "Notifications", href: "/dashboard/notifications", icon: Bell, keywords: ["alerts"] },
       { title: "Settings", href: "/dashboard/settings", icon: Settings, keywords: ["profile", "billing", "api keys", "appearance"] },

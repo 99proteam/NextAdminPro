@@ -4,7 +4,7 @@ import { GithubIcon } from "@/components/icons";
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, ChevronsLeft, Coffee, Heart, Search } from "lucide-react";
+import { ChevronDown, ChevronsLeft, Heart, Search } from "lucide-react";
 import { navigation } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -122,24 +122,24 @@ export function Sidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle:
       <SidebarNav collapsed={collapsed} />
       {collapsed ? (
         <div className="flex justify-center py-3">
-          <Tooltip content="Buy me a coffee" side="right">
+          <Tooltip content="Sponsor on GitHub" side="right">
             <a
               href={siteConfig.sponsor}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Buy me a coffee"
-              className="flex size-9 items-center justify-center rounded-md bg-[#FFDD00] text-[#0d0c22] shadow-sm hover:bg-[#ffe433]"
+              aria-label="Sponsor on GitHub"
+              className="flex size-9 items-center justify-center rounded-md bg-[#bf3989] text-white shadow-sm hover:bg-[#a52f75]"
             >
-              <Coffee className="size-4" />
+              <Heart className="size-4 fill-current" />
             </a>
           </Tooltip>
         </div>
       ) : (
-        <div className="m-3 rounded-xl border bg-gradient-to-br from-[#FFDD00]/20 via-primary/5 to-transparent p-3.5 [@media(max-height:940px)]:border-0 [@media(max-height:940px)]:bg-none [@media(max-height:940px)]:p-0">
+        <div className="m-3 rounded-xl border bg-gradient-to-br from-[#db61a2]/15 via-primary/5 to-transparent p-3.5 [@media(max-height:940px)]:border-0 [@media(max-height:940px)]:bg-none [@media(max-height:940px)]:p-0">
           <p className="flex items-center gap-1.5 text-sm font-semibold [@media(max-height:940px)]:hidden">
             <Heart className="size-4 fill-destructive text-destructive" /> Support this project
           </p>
-          <p className="mt-1 text-xs text-muted-foreground [@media(max-height:940px)]:hidden">NextAdminPro is free &amp; open source. Your support keeps it growing.</p>
+          <p className="mt-1 text-xs text-muted-foreground [@media(max-height:940px)]:hidden">NextAdminPro is free &amp; open source. Help us reach {siteConfig.sponsorGoal} on GitHub Sponsors.</p>
           <SponsorButton className="mt-3 h-10 w-full text-sm [@media(max-height:940px)]:mt-0" />
           <a
             href={siteConfig.github}

@@ -68,6 +68,8 @@ const map: Record<string, [BadgeVariant, LucideIcon, string?]> = {
   planning: ["secondary", PenLine],
   "on-hold": ["warning", PauseCircle, "On hold"],
   "at-risk": ["destructive", AlertTriangle, "At risk"],
+  "on-track": ["success", CheckCircle2, "On track"],
+  "off-track": ["destructive", XCircle, "Off track"],
   "on-leave": ["warning", Clock, "On leave"],
   onboarding: ["default", UserPlus],
   terminated: ["secondary", Ban],

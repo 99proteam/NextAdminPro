@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Coffee, Heart } from "lucide-react";
+import { ArrowRight, Heart } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { GithubIcon } from "@/components/icons";
 import { Logo } from "@/components/layout/logo";
@@ -19,10 +19,10 @@ export function SponsorBar() {
       href={siteConfig.sponsor}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-center justify-center gap-2 bg-[#FFDD00] px-4 py-2.5 text-center text-sm font-semibold text-[#0d0c22] hover:bg-[#ffe433] sm:text-base"
+      className="group flex items-center justify-center gap-2 bg-[#bf3989] px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-[#a52f75] sm:text-base"
     >
-      <Coffee className="size-5 shrink-0 transition-transform group-hover:-rotate-12" />
-      <span>Love NextAdminPro? It’s free forever. <span className="underline underline-offset-4">Buy me a coffee</span> to support it</span>
+      <Heart className="size-5 shrink-0 fill-current transition-transform group-hover:scale-110" />
+      <span>Love NextAdminPro? It’s free forever. <span className="underline underline-offset-4">Sponsor it on GitHub</span> and help us reach {siteConfig.sponsorGoal}</span>
       <ArrowRight className="hidden size-4 transition-transform group-hover:translate-x-1 sm:block" />
     </a>
   );
@@ -65,7 +65,7 @@ export function SiteFooter() {
         </div>
         <FooterCol title="Product" items={[["Live demo", "/dashboard"], ["Features", "/#features"], ["Pricing template", "/pricing"], ["UI components", "/dashboard/components"]]} />
         <FooterCol title="Resources" items={[["Documentation", "/docs"], ["Changelog", "/changelog"], ["GitHub", siteConfig.github], ["Report a bug", `${siteConfig.github}/issues`]]} />
-        <FooterCol title="Support" items={[["Buy me a coffee", siteConfig.sponsor], ["Star on GitHub", siteConfig.github], ["Contribute", `${siteConfig.github}/blob/main/CONTRIBUTING.md`], ["MIT License", `${siteConfig.github}/blob/main/LICENSE`]]} />
+        <FooterCol title="Support" items={[["Sponsor on GitHub", siteConfig.sponsor], ["Buy me a coffee", siteConfig.coffee], ["Star on GitHub", siteConfig.github], ["Contribute", `${siteConfig.github}/blob/main/CONTRIBUTING.md`], ["MIT License", `${siteConfig.github}/blob/main/LICENSE`]]} />
       </div>
       <div className="border-t">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 py-5 text-sm text-muted-foreground sm:flex-row sm:px-6">

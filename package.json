@@ -1,6 +1,6 @@
 {
   "name": "next-admin-pro",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Free open-source Next.js 16 admin dashboard template – TypeScript, Tailwind CSS v4, Radix UI. Analytics, CRM, e-commerce, invoices, reports, helpdesk, chat, file manager, kanban, RBAC and dark mode.",
   "private": true,
   "license": "MIT",
@@ -13,10 +13,16 @@
   "bugs": {
     "url": "https://github.com/99proteam/NextAdminPro/issues"
   },
-  "funding": {
-    "type": "buymeacoffee",
-    "url": "https://buymeacoffee.com/99proteam"
-  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/99proteam"
+    },
+    {
+      "type": "buymeacoffee",
+      "url": "https://buymeacoffee.com/99proteam"
+    }
+  ],
   "keywords": [
     "admin",
     "admin-dashboard",

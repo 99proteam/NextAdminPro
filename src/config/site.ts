@@ -5,9 +5,12 @@ export const siteConfig = {
     "NextAdminPro is a free, open-source Next.js 16 admin dashboard template built with TypeScript, Tailwind CSS v4 and Radix UI. Includes analytics, CRM, e-commerce, invoices, kanban, calendar, inbox, roles & permissions and dark mode.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://99proteam.github.io/NextAdminPro",
   github: "https://github.com/99proteam/NextAdminPro",
-  sponsor: "https://buymeacoffee.com/99proteam",
+  sponsor: "https://github.com/sponsors/99proteam",
+  coffee: "https://buymeacoffee.com/99proteam",
+  // Monthly GitHub Sponsors goal, shown next to sponsor links.
+  sponsorGoal: "$5,000/month",
   demo: "https://99proteam.github.io/NextAdminPro/",
-  version: "1.2.0",
+  version: "1.3.0",
   // 1200×630 social preview used for Open Graph / Twitter cards (relative to `url`).
   ogImage: "/og-image.png",
   keywords: [

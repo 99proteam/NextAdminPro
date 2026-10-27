@@ -11,7 +11,6 @@ import {
   UsersRound,
   Briefcase,
   Building2,
-  Coffee,
   Command,
   FileBarChart,
   FileText,
@@ -32,6 +31,8 @@ import {
   Table2,
   TicketPercent,
   Users,
+  Target,
+  Webhook,
   Zap,
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
@@ -62,6 +63,8 @@ const features = [
   { icon: FolderKanban, title: "Projects & timesheets", text: "Budgets, progress, live time tracking, billable hours and appointments." },
   { icon: Megaphone, title: "Marketing & CMS", text: "Campaigns with open/click tracking, blog posts, knowledge base and reviews." },
   { icon: Plug, title: "Integrations marketplace", text: "Connect Stripe, Slack, HubSpot, Zapier, S3 and more with a single toggle." },
+  { icon: Target, title: "Goals & OKRs", text: "Objectives with measurable key results, team progress, health status and quick check-ins." },
+  { icon: Webhook, title: "Webhooks", text: "Signed event endpoints, test events, delivery logs with retries and secret rotation." },
   { icon: Command, title: "Command palette", text: "Press ⌘K / Ctrl+K to jump to any page, customer, order or product." },
   { icon: Keyboard, title: "Keyboard shortcuts", text: "G + letter navigation, Ctrl/⌘+B to toggle the sidebar, ? for the cheat sheet." },
   { icon: Moon, title: "Dark mode & accent themes", text: "Light, dark and system modes plus six accent colors, driven by CSS design tokens." },
@@ -103,7 +106,7 @@ const faqs = [
   },
   {
     q: "How can I support the project?",
-    a: "Star the repository on GitHub, share it with other developers, contribute on GitHub, or buy the maintainer a coffee at buymeacoffee.com/99proteam.",
+    a: "Star the repository on GitHub, share it with other developers, contribute on GitHub, or sponsor the maintainer on GitHub Sponsors at github.com/sponsors/99proteam (goal: $5,000/month). One-off coffees at buymeacoffee.com/99proteam are welcome too.",
   },
 ];
 
@@ -169,7 +172,7 @@ export default function LandingPage() {
             The free <span className="text-primary">Next.js admin dashboard</span> template for any business
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground text-pretty">
-            45+ ready-made pages: analytics, CRM &amp; deals, e-commerce, subscriptions, invoices, HR &amp; payroll, projects,
+            50+ ready-made pages: analytics, CRM &amp; deals, goals &amp; OKRs, webhooks, e-commerce, subscriptions, invoices, HR &amp; payroll, projects,
             inventory, helpdesk, chat, marketing, CMS, roles &amp; permissions and more. Built on Next.js 16, TypeScript and Tailwind CSS.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
@@ -214,7 +217,7 @@ export default function LandingPage() {
       <section className="border-b bg-card">
         <dl className="mx-auto grid max-w-6xl grid-cols-2 gap-6 px-4 py-10 text-center sm:px-6 md:grid-cols-4">
           {[
-            ["45+", "Pages & modules"],
+            ["50+", "Pages & modules"],
             ["40+", "UI components"],
             ["100%", "Free (MIT)"],
             ["2 + 6", "Themes & accents"],
@@ -274,16 +277,16 @@ export default function LandingPage() {
       </section>
 
       <section id="sponsor" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-20 sm:px-6">
-        <div className="relative overflow-hidden rounded-3xl border-2 border-[#FFDD00] bg-gradient-to-br from-[#FFDD00]/30 via-[#FFDD00]/10 to-transparent p-8 sm:p-12">
-          <Coffee className="absolute -right-6 -top-6 size-48 rotate-12 text-[#FFDD00]/40" aria-hidden />
+        <div className="relative overflow-hidden rounded-3xl border-2 border-[#db61a2] bg-gradient-to-br from-[#db61a2]/25 via-[#db61a2]/10 to-transparent p-8 sm:p-12">
+          <Heart className="absolute -right-6 -top-6 size-48 rotate-12 fill-current text-[#db61a2]/25" aria-hidden />
           <div className="relative max-w-2xl">
-            <p className="inline-flex items-center gap-2 rounded-full bg-[#FFDD00] px-3 py-1 text-xs font-semibold text-[#0d0c22]">
+            <p className="inline-flex items-center gap-2 rounded-full bg-[#bf3989] px-3 py-1 text-xs font-semibold text-white">
               <Heart className="size-3.5 fill-current" /> Support open source
             </p>
-            <h2 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">Love NextAdminPro? Buy me a coffee ☕</h2>
+            <h2 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">Love NextAdminPro? Become a sponsor 💖</h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              NextAdminPro is free and always will be. If it saved you weeks of work, a small coffee helps fund new pages, bug
-              fixes and updates for everyone.
+              NextAdminPro is free and always will be. If it saved you weeks of work, sponsor it on GitHub. Our goal is{" "}
+              <b className="text-foreground">{siteConfig.sponsorGoal}</b> so new pages, bug fixes and updates can ship full time.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <SponsorButton size="lg" />
@@ -295,7 +298,11 @@ export default function LandingPage() {
             </div>
             <p className="mt-4 text-sm text-muted-foreground">
               <a href={siteConfig.sponsor} target="_blank" rel="noopener noreferrer" className="font-medium underline-offset-4 hover:underline">
-                buymeacoffee.com/99proteam
+                github.com/sponsors/99proteam
+              </a>
+              {" · or "}
+              <a href={siteConfig.coffee} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:underline">
+                buy me a coffee
               </a>
             </p>
           </div>

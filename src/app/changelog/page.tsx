@@ -10,9 +10,18 @@ export const metadata: Metadata = {
 
 const releases = [
   {
-    version: "1.2.0",
+    version: "1.3.0",
     date: "October 2026",
     tag: "Latest",
+    items: [
+      "Goals & OKRs module: objectives with measurable key results, progress by team, health status and a check-in dialog",
+      "Webhooks module: event endpoints, signing secrets with rotation, test events, delivery log with retries and payload preview",
+      "GitHub Sponsors is now the main way to support the project (goal: $5,000/month)",
+    ],
+  },
+  {
+    version: "1.2.0",
+    date: "October 2026",
     items: [
       "20 new modules: Deals pipeline, Subscriptions, Transactions, Reviews, Shipments, Vendors, Purchase orders, Warehouses, Expenses, Contracts, Projects, Timesheets, Appointments, Employees, Time off, Payroll, Campaigns, Blog, Knowledge base and Integrations",
       "Reusable CRUD engine with stats, filters, bulk actions and auto-generated forms",

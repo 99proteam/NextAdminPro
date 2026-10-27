@@ -668,3 +668,137 @@ export const integrations: Integration[] = [
   { id: "quickbooks", name: "QuickBooks", category: "Accounting", description: "Sync invoices, payments and expenses.", connected: false, color: "#2ca01c" },
   { id: "xero", name: "Xero", category: "Accounting", description: "Automatic bookkeeping and reconciliation.", connected: false, color: "#13b5ea" },
 ];
+
+/* ------------------------------ Goals ------------------------------ */
+
+export interface KeyResult {
+  id: string;
+  title: string;
+  current: number;
+  target: number;
+  unit: string;
+}
+export interface Goal {
+  id: string;
+  objective: string;
+  owner: string;
+  team: "Company" | "Sales" | "Marketing" | "Product" | "Engineering" | "Support";
+  quarter: string;
+  status: "on-track" | "at-risk" | "off-track" | "completed";
+  keyResults: KeyResult[];
+  due: string;
+  updated: string;
+}
+const gl = createRng(1301);
+const goalSeeds: [string, Goal["team"], [string, number, string][]][] = [
+  ["Grow recurring revenue", "Company", [["Monthly recurring revenue", 250000, "$"], ["Net revenue retention", 115, "%"], ["Enterprise deals closed", 12, "deals"]]],
+  ["Build a predictable sales pipeline", "Sales", [["Qualified pipeline added", 1200000, "$"], ["Discovery calls booked", 160, "calls"], ["Deals won from inbound leads", 40, "deals"]]],
+  ["Become the go-to brand in our niche", "Marketing", [["Monthly organic sessions", 90000, "visits"], ["In-depth guides published", 24, "posts"], ["Newsletter subscribers", 20000, "subs"]]],
+  ["Ship a delightful onboarding", "Product", [["Activation rate", 45, "%"], ["Onboarding steps automated", 10, "steps"], ["Onboarding interviews run", 30, "interviews"]]],
+  ["Make the platform fast and reliable", "Engineering", [["Uptime", 99.95, "%"], ["Services with p95 latency under 250 ms", 12, "services"], ["Critical bugs closed", 40, "bugs"]]],
+  ["Deliver world-class support", "Support", [["Customer satisfaction (CSAT)", 95, "%"], ["Tickets answered within 2 hours", 90, "%"], ["Help articles published", 120, "articles"]]],
+  ["Expand into new markets", "Company", [["Localized storefronts launched", 4, "markets"], ["Regional partners signed", 8, "partners"]]],
+  ["Improve self-serve conversion", "Product", [["Trial-to-paid conversion", 18, "%"], ["Pricing page experiments shipped", 6, "tests"]]],
+];
+export const goals: Goal[] = goalSeeds.map(([objective, team, krs], i) => {
+  const quarter = i < 6 ? "Q4 2026" : gl.pick(["Q3 2026", "Q1 2027"]);
+  const done = quarter === "Q3 2026";
+  // Each goal moves at its own pace so the sample shows a mix of healthy and lagging goals.
+  const pace = gl.pick([0.2, 0.45, 0.7, 0.9]);
+  const keyResults = krs.map(([title, target, unit], k) => {
+    const ratio = done ? 1 : Math.min(1, pace * gl.float(0.7, 1.2));
+    const current = Number((target * ratio).toFixed(target < 10 ? 2 : 0));
+    return { id: `kr_${i + 1}_${k + 1}`, title, current, target, unit };
+  });
+  const progress = goalProgress({ keyResults } as Goal);
+  return {
+    id: `goal_${i + 1}`,
+    objective,
+    owner: gl.pick(staff),
+    team,
+    quarter,
+    status: done ? "completed" : goalStatus(progress, quarter),
+    keyResults,
+    due: iso(quarter === "Q3 2026" ? -gl.int(5, 30) : quarter === "Q4 2026" ? gl.int(20, 65) : gl.int(90, 150)),
+    updated: iso(-gl.int(0, 14)),
+  };
+});
+
+/** Average key result completion, 0–100. */
+export function goalProgress(g: Pick<Goal, "keyResults">) {
+  if (!g.keyResults.length) return 0;
+  const sum = g.keyResults.reduce((a, kr) => a + Math.min(1, kr.target ? kr.current / kr.target : 0), 0);
+  return Math.round((sum / g.keyResults.length) * 100);
+}
+
+/** Rough health signal: how far along a goal is compared with where it should be this quarter. */
+export function goalStatus(progress: number, quarter: string): Goal["status"] {
+  if (progress >= 100) return "completed";
+  const expected = quarter === "Q4 2026" ? 30 : quarter === "Q1 2027" ? 0 : 100;
+  if (progress >= expected) return "on-track";
+  return progress >= expected - 15 ? "at-risk" : "off-track";
+}
+
+/* ----------------------------- Webhooks ----------------------------- */
+
+export const webhookEvents = [
+  "order.created",
+  "order.paid",
+  "order.refunded",
+  "customer.created",
+  "customer.updated",
+  "invoice.paid",
+  "invoice.overdue",
+  "subscription.created",
+  "subscription.canceled",
+  "ticket.created",
+] as const;
+export type WebhookEvent = (typeof webhookEvents)[number];
+
+export interface WebhookDelivery {
+  id: string;
+  event: WebhookEvent;
+  statusCode: number;
+  durationMs: number;
+  at: string;
+  attempt: number;
+}
+export interface WebhookEndpoint {
+  id: string;
+  url: string;
+  description: string;
+  events: WebhookEvent[];
+  enabled: boolean;
+  secret: string;
+  created: string;
+  deliveries: WebhookDelivery[];
+}
+const wh = createRng(1402);
+const hex = (n: number) => Array.from({ length: n }, () => wh.int(0, 15).toString(16)).join("");
+const endpointSeeds: [string, string, WebhookEvent[], boolean][] = [
+  ["https://api.acme.io/hooks/orders", "Order fulfilment service", ["order.created", "order.paid", "order.refunded"], true],
+  ["https://hooks.slack.com/services/T000/B000/XXXX", "Sales alerts in #revenue", ["order.paid", "subscription.created", "subscription.canceled"], true],
+  ["https://erp.northwind.example/webhooks/invoices", "ERP invoice sync", ["invoice.paid", "invoice.overdue"], true],
+  ["https://crm.example.com/api/v2/contacts/webhook", "CRM contact sync", ["customer.created", "customer.updated"], false],
+  ["https://helpdesk.example.com/incoming", "Helpdesk escalations", ["ticket.created"], true],
+];
+export const webhookEndpoints: WebhookEndpoint[] = endpointSeeds.map(([url, description, events, enabled], i) => ({
+  id: `we_${i + 1}`,
+  url,
+  description,
+  events,
+  enabled,
+  secret: `whsec_${hex(32)}`,
+  created: iso(-wh.int(20, 300)),
+  deliveries: Array.from({ length: enabled ? wh.int(6, 12) : 3 }, (_, d) => {
+    const ok = wh.next() > (i === 2 ? 0.35 : 0.08);
+    return {
+      id: `evt_${i + 1}_${d + 1}`,
+      event: wh.pick(events),
+      statusCode: ok ? wh.pick([200, 200, 200, 201, 204]) : wh.pick([500, 502, 404, 410]),
+      durationMs: wh.int(ok ? 60 : 900, ok ? 480 : 5000),
+      at: new Date(NOW - (d * wh.int(30, 240) + wh.int(1, 20)) * 60_000).toISOString(),
+      attempt: ok ? 1 : wh.int(1, 3),
+    };
+  }).sort((a, b) => b.at.localeCompare(a.at)),
+}));
